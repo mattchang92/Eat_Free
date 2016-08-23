@@ -33,13 +33,22 @@
             <!-- <li><a href="#" class="link">RECIPES</a></li> -->
             <li class="home-link"><a href="/planner" class="link">MEAL PLANNER</a></li>
             <li class="home-link">
-              <a href="#" class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PROFILE<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %><span class="caret"></span></a>
               <ul class="dropdown-menu">
+                <% if user_signed_in? %>
+                <li><%= link_to "My Profile", root_path %></li>
+                <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
+                <% else %>
                 <li class="">
-                  <a type="button" data-toggle="modal" data-target="#myModal">
+                  <a type="button" data-toggle="modal" data-target="#LogInModal">
                     Log In
                   </a></li>
-                <li><a href="#">Sign Up</a></li>
+                <li class="">
+                  <a type="button" data-toggle="modal" data-target="#SignUpModal">
+                    Sign Up Modal
+                  </a></li>
+                <li><%= link_to "Sign Up", new_user_path %></li>
+                <% end %>
               </ul>
             </li>
           </ul>
@@ -55,27 +64,5 @@
 
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog container" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
-      </div>
-      <div class="modal-body">
-        <form action="post">
-          <input type="text" placeholder="Username/Email" class="input-field"></input><br>
-          <input type="text" placeholder="Password" class="input-field"></input>
-        </form>
-        <a href="#">Forgot Password?</a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Log In</button>
-      </div>
-      <div class="modal-footer">
-        <h4>Don't have an account?<a href="#">Sign up</a></h4>
-      </div>
-
-    </div>
-  </div>
-</div>
+<%= render "signIn" %>
+<%= render "signUp" %>
