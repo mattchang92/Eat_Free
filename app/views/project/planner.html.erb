@@ -1,31 +1,3 @@
-<div class="content-page-wrapper">
-<div class="text container planner-header">
-  <div class="section-header section-boxed apply-gradient" style="padding: 5px; padding-top: 50px">
-    <nav class="navbar planner-navbar">
-      <div class="header-wrapper" >
-        <div class="col-md-12">
-        <ul class="nav navbar-nav container">
-          <li class="home-link"><a href="/" class="link">HOME</a></li>
-          <li class="home-link"><a href="#" class="link">ABOUT</a></li>
-          <!-- <li><a href="#" class="link">RECIPES</a></li> -->
-          <li class="home-link"><a href="/planner" class="link">MEAL PLANNER</a></li>
-          <li class="home-link">
-            <a href="#" class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <% if user_signed_in? %>
-              <li><%= link_to "My Profile", root_path %></li>
-              <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
-              <% else %>
-              <li class="">
-                <a type="button" data-toggle="modal" data-target="#LogInModal">
-                  Log In
-                </a></li>
-              <li><%= link_to "Sign Up", new_user_path %></li>
-              <% end %>
-            </ul>
-          </li>
-        </ul>
-      </nav>
       <div id="recipe-container" style="padding-top: 50px">
          <h1 style="color: white">Add a recipe!</h1>
 
@@ -63,8 +35,7 @@
       </div>
       </div>
     </div>
-  </div>
-</div>
+
 
 <div class="container daily-progress">
   <div style="text-align: center"><h4>Today's Goals</h4></div>
@@ -99,6 +70,4 @@
       70%
     </div>
   </div>
-</div>
-
 </div>

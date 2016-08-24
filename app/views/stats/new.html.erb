@@ -1,0 +1,30 @@
+<div style="height: 1000px" class="col-md-12" >
+  <div class="container" style="background-color: white">
+    <h1>test</h1>
+    <%= form_for @stat do |f| %>
+    <div>
+      <%= f.radio_button :sex, 'Male', :checked => true %>
+      <%= label :contactmethod_email, 'Male' %>
+      <%= f.radio_button :sex, 'Female' %>
+      <%= label :contactmethod_sms, 'Female' %>
+    </div>
+    <div>
+      <%= f.label :age %>
+      <%= f.text_field :age %>
+    </div>
+    <div>
+      <%= f.label :weight %>
+      <%= f.text_field :weight %>
+    </div>
+    <div>
+      <%= f.label :height %>
+      <%= f.text_field :height %>
+    </div>
+    <div>
+      <%= f.label "Activity Level" %>
+      <%= f.select :activity_level, ["Sedentary", "Lightly active", "Moderately active", "Very active", "Extremely Active",]%>
+
+    </div>
+    <% end %>
+  </div>
+</div>

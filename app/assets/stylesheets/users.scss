@@ -1,3 +1,41 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sign-in-body {
+  background-color: lightgray;
+}
+
+.log-in-input {
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+  padding: 4px;
+}
+
+.sign-up-input {
+  width: 100%;
+  margin: 5px 0px 5px 0px;
+  padding: 4px;
+}
+
+.log-in-button {
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+  background-color: #00CCBD;
+  border-color: #00CCBD;
+}
+
+#link-to-sign-up {
+  color: #337ab7;
+  text-shadow: none;
+  opacity: 1;
+  clear: right;
+  font-weight: normal;
+  font-size: 1em;
+  float: none;
+  margin: 5px;
+}
+
+#link-to-sign-up:hover {
+  text-decoration: underline;
+}

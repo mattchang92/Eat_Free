@@ -5,38 +5,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+        <h4 class="modal-title" id="myModalLabel">Sign up to set up your profile</h4>
+        <h6>Please enter your information below</h6>
       </div>
-      <div class="modal-body">
-        <!-- <form action="post">
-          <input type="text" placeholder="Username/Email" class="input-field"></input><br>
-          <input type="text" placeholder="Password" class="input-field"></input>
-        </form> -->
+      <div class="modal-body sign-in-body">
+
         <% @user = User.new %>
         <%= @user.errors.full_messages.join(", ") %>
 
         <%= form_for @user do |f| %>
-        <div>
-          <%= f.label :first_name %>
-          <%= f.text_field :first_name %>
-        </div>
-        <div>
-          <%= f.label :last_name %>
-          <%= f.text_field :last_name %>
-        </div>
-        <div>
-          <%= f.label :email %>
-          <%= f.email_field :email %>
-        </div>
-        <div>
-          <%= f.label :password %>
-          <%= f.password_field :password %>
-        </div>
-        <div>
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation %>
-        </div>
-        <%= f.submit "Sign Up" %>
+          <%= f.text_field :first_name, placeholder: "First Name...", class: "sign-up-input" %>
+          <%= f.text_field :last_name, placeholder: "Last Name...", class: "sign-up-input" %>
+          <%= f.email_field :email, placeholder: "Email...", class: "sign-up-input" %>
+          <%= f.password_field :password, placeholder: "Password...", class: "sign-up-input" %>
+          <%= f.password_field :password_confirmation, placeholder: "Confirm Password...", class: "sign-up-input" %>
+        <%= f.submit "Sign Up", class: "btn btn-primary log-in-button" %>
         <% end %>
       </div>
     </div>
