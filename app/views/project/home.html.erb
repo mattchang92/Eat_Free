@@ -29,7 +29,7 @@
           <div class="col-md-12">
           <ul class="nav navbar-nav container">
             <li class="home-link"><a href="/" class="link">HOME</a></li>
-            <li class="home-link"><a href="#" class="link">ABOUT</a></li>
+            <li class="home-link"><a href="/test" class="link">ABOUT</a></li>
             <!-- <li><a href="#" class="link">RECIPES</a></li> -->
             <% if user_signed_in? %>
               <li class="home-link"><a href="/planner" class="link">MEAL PLANNER</a></li>
@@ -63,9 +63,26 @@
     </div>
 
   </div>
-
-
 </div>
+  <div class="col-md-6 flip-image1" >
+    <h2 class="flip-text">Supplement your training with a tailored diet</h2>
+  </div>
+
+  <div class="col-md-6 flip-image2">
+    <h2 class="flip-text">Take the guess work out of weight loss</h2>
+  </div>
+
+<!-- <div class="home-footer">
+  <a href="#"><i class="fa fa-github"></i></a>
+  <a href="#"><i class="fa fa-linkedin"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-facebook"></i></a>
+  <a href="#"><i class="fa fa-google-plus"></i></a>
+</div> -->
+
+
+
 
 <%= render "signIn" %>
 <%= render "signUp" %>
+<%= render "movingNav" %>
