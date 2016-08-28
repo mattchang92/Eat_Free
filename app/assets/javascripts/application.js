@@ -16,65 +16,8 @@
 //= require turbolinks
 //= require_tree .
 
-// (function() {
-//     var $win = $(window);
-//
-//     function checkScroll() {
-//         if ($win.scrollTop() > 500) {
-//             $win.off('scroll', checkScroll);
-//             $('#bottomMenu').fadeIn(3000);
-//         }
-//     }
-//
-//     $win.scroll(checkScroll);
-// })();
 
 
-// make navbar appear/disappear, not yet working
-
-var didScroll;
-
-$(window).scroll(function(event){
-    didScroll = true;
-});
-
-setInterval(function() {
-    if (didScroll) {
-      hasScrolled();
-      didScroll = false;
-    }
-}, 250);
-
-function hasScrolled() {
-
-  // my Code
-  if ($(this).scrollTop() > 200) {
-    $('.test-header').addClass('nav-down');
-  } else {
-    $('.test-header').removeClass('nav-down').addClass('nav-up');
-  }
-
-  if ($(this).scrollTop() > 500) {
-    $('.flip-image1').fadeIn();
-    $('.flip-image1').addClass('flipper');
-    $('.flip-image2').fadeIn();
-    $('.flip-image2').addClass('flipper');
-  } else {
-    $('.flip-image1').fadeOut();
-    $('.flip-image1').remove('flipper');
-    $('.flip-image2').fadeOut();
-    $('.flip-image2').remove('flipper');
-  }
-
-  if ($(this).scrollTop() > 800) {
-    $('.home-footer').fadeIn();
-    $('.home-footer').addClass('flipper');
-  } else {
-    $('.home-footer').fadeOut();
-    $('.home-footer').remove('flipper');
-  }
-
-}
 
 // control carousel speed
 $(document).ready(function(){
@@ -84,9 +27,67 @@ $(document).ready(function(){
        pause: false
    });
 
-   $('.flip-image1').hide();
-   $('.flip-image2').hide();
-   $('.home-footer').hide();
+  //  $('.flip-image1').hide();
+  //  $('.flip-image2').hide();
+  //  $('.home-footer').hide();
+
+
+  var didScroll;
+
+  $(window).scroll(function(event){
+      didScroll = true;
+  });
+
+  setInterval(function() {
+      if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+      }
+  }, 250);
+
+  function hasScrolled() {
+
+    // my Code
+    if ($(this).scrollTop() > 200) {
+      $('.test-header').addClass('nav-down');
+    } else {
+      $('.test-header').removeClass('nav-down').addClass('nav-up');
+    }
+
+    if ($(this).scrollTop() > 500) {
+      $('.flip-image1').show();
+      $('.flip-image1').addClass('flipper');
+      $('.flip-image2').show();
+      $('.flip-image2').addClass('flipper');
+    } else {
+      $('.flip-image1').hide();
+      $('.flip-image1').removeClass('flipper');
+      $('.flip-image2').hide();
+      $('.flip-image2').removeClass('flipper');
+    }
+
+    // if ($(this).scrollTop() > 800) {
+    //   $('.home-footer').fadeIn();
+    //   $('.home-footer').addClass('flipper');
+    // } else {
+    //   $('.home-footer').fadeOut();
+    //   $('.home-footer').remove('flipper');
+    // }
+
+
+  }
+    var recipeScroll = setInterval(function(){
+      $('#photo-container').scrollLeft($('#photo-container').scrollLeft()+1);
+    },15);
+
+    
+    var checkSliderInputs = setInterval(function(){
+      $('#age-input').val($('#ageSlider').val());
+      $('#height-input').val($('#heightSlider').val());
+      $('#weight-input').val($('#weightSlider').val());
+    },100);
+
+
 
 });
 

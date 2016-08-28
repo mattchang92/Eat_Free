@@ -1,28 +1,50 @@
 <div style="height: 1000px" class="col-md-12" >
-  <div class="container" style="background-color: white">
+  <div id="stats-form-container">
     <h1>test</h1>
     <%= form_for @stat do |f| %>
     <div>
-      <%= f.radio_button :sex, 'Male', :checked => true %>
-      <%= label :contactmethod_email, 'Male' %>
-      <%= f.radio_button :sex, 'Female' %>
-      <%= label :contactmethod_sms, 'Female' %>
-    </div>
-    <div>
       <%= f.label :age %>
-      <%= f.text_field :age %>
+      <div class="row">
+        <div class="col-md-1">
+          <%= f.text_field :age, class: "stats-text-field", id: "age-input" %>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+          <input class="slide" type="range" min="15" max="100" id="ageSlider" style="width: 95%">
+        </div>
+      </div>
     </div>
     <div>
       <%= f.label :weight %>
-      <%= f.text_field :weight %>
+      <div class="row">
+        <div class="col-md-1">
+          <%= f.text_field :weight, class: "stats-text-field", id: "weight-input"  %>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+          <input class="slide" type="range" min="30" max="200" id="weightSlider" style="width: 95%">
+        </div>
+      </div>
     </div>
     <div>
       <%= f.label :height %>
-      <%= f.text_field :height %>
+      <div class="row">
+        <div class="col-md-1">
+          <%= f.text_field :height, class: "stats-text-field", id: "height-input" %>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+          <input class="slide" type="range" min="100" max="250" id="heightSlider" style="width: 95%">
+        </div>
+      </div>
     </div>
+
+
     <div>
       <%= f.label "Activity Level" %>
       <%= f.select :activity_level, ["Sedentary", "Lightly active", "Moderately active", "Very active", "Extremely Active",]%>
+
+    </div>
+    <div>
+      <%= f.radio_button :sex, "male", class:'btn' %>
+      <%= f.radio_button :sex, "female", class:'btn' %>
 
     </div>
     <% end %>
