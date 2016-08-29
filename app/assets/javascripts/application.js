@@ -22,6 +22,10 @@
 // control carousel speed
 $(document).ready(function(){
 
+  $('#age-input').val($('#ageSlider').val());
+  $('#height-input').val($('#heightSlider').val());
+  $('#weight-input').val($('#weightSlider').val());
+
    $("#myCarousel").carousel({
        interval : 5000,
        pause: false
@@ -73,21 +77,73 @@ $(document).ready(function(){
     //   $('.home-footer').fadeOut();
     //   $('.home-footer').remove('flipper');
     // }
-
-
   }
+
     var recipeScroll = setInterval(function(){
       $('#photo-container').scrollLeft($('#photo-container').scrollLeft()+1);
     },15);
 
-    
-    var checkSliderInputs = setInterval(function(){
-      $('#age-input').val($('#ageSlider').val());
-      $('#height-input').val($('#heightSlider').val());
-      $('#weight-input').val($('#weightSlider').val());
-    },100);
+
+    $('.slide').mouseenter(function(){
+      var checkSliderInput = setInterval(function(){
+        $('#age-input').val($('#ageSlider').val());
+        $('#height-input').val($('#heightSlider').val());
+        $('#weight-input').val($('#weightSlider').val());
+      },50);
+
+      $('.slide').mouseleave(function(){
+        clearInterval(checkSliderInput)
+      })
+    });
+
+    $('.stats-text-field').mouseenter(function(){
+      var checkTextInput = setInterval(function(){
+        $('#ageSlider').val($('#age-input').val());
+        $('#heightSlider').val($('#height-input').val());
+        $('#weightSlider').val($('#weight-input').val());
+      },100);
+
+      $('.stats-text-field').mouseleave(function(){
+        clearInterval(checkTextInput)
+      })
+    });
 
 
+    $('#sedentary').click(function(){
+      $('.activity').removeClass('option-selected');
+      $('#activity-level-input').val(1.2);
+      $(this).addClass('option-selected');
+    })
+
+    $('#lightly-active').click(function(){
+      $('.activity').removeClass('option-selected');
+      $('#activity-level-input').val(1.433);
+      $(this).addClass('option-selected');
+    })
+
+    $('#active').click(function(){
+      $('.activity').removeClass('option-selected');
+      $('#activity-level-input').val(1.666);
+      $(this).addClass('option-selected');
+    })
+
+    $('#very-active').click(function(){
+      $('.activity').removeClass('option-selected');
+      $('#activity-level-input').val(1.9);
+      $(this).addClass('option-selected');
+    })
+
+    $('#male').click(function(){
+      $('.sex-box').removeClass('option-selected');
+      $('#sex-input').val('male');
+      $(this).addClass('option-selected');
+    })
+
+    $('#female').click(function(){
+      $('.sex-box').removeClass('option-selected');
+      $('#sex-input').val('female');
+      $(this).addClass('option-selected');
+    })
 
 });
 

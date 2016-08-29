@@ -4,4 +4,9 @@ class StatsController < ApplicationController
     @stat = Stat.new
   end
 
+  def create
+    redirect_to root_path
+  end
+
+
 end

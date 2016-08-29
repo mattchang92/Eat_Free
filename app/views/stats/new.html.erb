@@ -1,14 +1,14 @@
 <div style="height: 1000px" class="col-md-12" >
   <div id="stats-form-container">
-    <h1>test</h1>
+    <h1>Enter Your Stats To Calculate Your Daily Calorie Requirements</h1>
     <%= form_for @stat do |f| %>
     <div>
       <%= f.label :age %>
       <div class="row">
-        <div class="col-md-1">
+        <div class="col-md-2">
           <%= f.text_field :age, class: "stats-text-field", id: "age-input" %>
         </div>
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 ">
           <input class="slide" type="range" min="15" max="100" id="ageSlider" style="width: 95%">
         </div>
       </div>
@@ -16,21 +16,22 @@
     <div>
       <%= f.label :weight %>
       <div class="row">
-        <div class="col-md-1">
-          <%= f.text_field :weight, class: "stats-text-field", id: "weight-input"  %>
+        <div class="col-md-2">
+          <%= f.text_field :weight, class: "stats-text-field", id: "weight-input"  %><span>KG</span>
+          <!-- <span class="input-group-addon">.00</span> -->
         </div>
-        <div class="col-md-10 col-md-offset-1">
-          <input class="slide" type="range" min="30" max="200" id="weightSlider" style="width: 95%">
+        <div class="col-md-10 ">
+          <input class="slide" type="range" min="30" max="200" step="0.1" id="weightSlider" style="width: 95%">
         </div>
       </div>
     </div>
     <div>
       <%= f.label :height %>
       <div class="row">
-        <div class="col-md-1">
-          <%= f.text_field :height, class: "stats-text-field", id: "height-input" %>
+        <div class="col-md-2">
+          <%= f.text_field :height, class: "stats-text-field", id: "height-input" %><span>CM</span>
         </div>
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 ">
           <input class="slide" type="range" min="100" max="250" id="heightSlider" style="width: 95%">
         </div>
       </div>
@@ -38,14 +39,57 @@
 
 
     <div>
-      <%= f.label "Activity Level" %>
-      <%= f.select :activity_level, ["Sedentary", "Lightly active", "Moderately active", "Very active", "Extremely Active",]%>
-
+      <%= f.label "Activity Level" %><br>
+      <%= f.text_field :activity_level, id: "activity-input"%>
+      <div class="row activity-form">
+        <div class="col-lg-10 col-lg-offset-1 row-fluid" >
+          <div class="col-lg-2 box activity " id="sedentary">
+            <h3>Sedentary</h3>
+            <span class="tooltiptext" id="tooltiptext1">Spend most of the day sitting (little or no exercise)</span>
+          </div>
+          <div class="col-lg-2 box activity " id="lightly-active">
+            <h3>Lightly Active</h3>
+            <span class="tooltiptext" id="tooltiptext1">Spend a good part of the day on your feet (light exercise 1-3 days/week)</span>
+          </div>
+          <div class="col-lg-2 box activity " id="active">
+            <h3>Active</h3>
+            <span class="tooltiptext" id="tooltiptext1">Spend a good part of the day doing physical activity (exercise 6-7 days/week)</span>
+          </div>
+          <div class="col-lg-2 box activity " id="very-active">
+            <h3>Very Active</h3>
+            <span class="tooltiptext" id="tooltiptext1">Spend most of the day doing heavy physical activity (very heavy exercise or training 2x/ day)</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div>
-      <%= f.radio_button :sex, "male", class:'btn' %>
-      <%= f.radio_button :sex, "female", class:'btn' %>
+      <%= f.label "Sex" %><br>
+      <%= f.text_field :sex, id: "sex-input"%>
+      <div class="row activity-form">
+        <div class="col-lg-10 col-lg-offset-1 row-fluid" >
+          <div class="col-lg-5 sex-box" id="male">
+            <h3>MALE</h3>
+          </div>
+          <div class="col-lg-5 sex-box" id="female">
+            <h3>FEMALE</h3>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div>
+      <%= f.label :weight_loss %>
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.text_field :weight_loss, class: "stats-text-field", id: "weight-loss-input"  %><span>LB/wk</span>
+        </div>
+        <div class="col-md-10 ">
+          <input class="slide" type="range" min="0.5" max="3" step="0.1" id="weightLossSlider" style="width: 95%">
+        </div>
+      </div>
+    </div>
+    <div>
+      <%= f.submit "Update Stats", id: "stats-submit-btn", class: 'btn' %>
     </div>
     <% end %>
   </div>
