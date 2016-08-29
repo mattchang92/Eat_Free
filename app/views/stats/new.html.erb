@@ -1,8 +1,9 @@
 <div style="height: 1000px" class="col-md-12" >
-  <div id="stats-form-container">
-    <h1>Enter Your Stats To Calculate Your Daily Calorie Requirements</h1>
+  <div id="stats-form-container" style="background-color: #DDE1E5">
+    <h1 style="padding-top: 50px">Enter Your Stats To Calculate Your Daily Calorie Requirements</h1>
     <%= form_for @stat do |f| %>
-    <div>
+
+    <div class='category'>
       <%= f.label :age %>
       <div class="row">
         <div class="col-md-2">
@@ -13,11 +14,12 @@
         </div>
       </div>
     </div>
-    <div>
-      <%= f.label :weight %>
+
+    <div class='category'>
+      <%= f.label "Weight (kg)" %>
       <div class="row">
         <div class="col-md-2">
-          <%= f.text_field :weight, class: "stats-text-field", id: "weight-input"  %><span>KG</span>
+          <%= f.text_field :weight, class: "stats-text-field", id: "weight-input"  %>
           <!-- <span class="input-group-addon">.00</span> -->
         </div>
         <div class="col-md-10 ">
@@ -25,22 +27,24 @@
         </div>
       </div>
     </div>
-    <div>
-      <%= f.label :height %>
+
+    <div class='category'>
+      <%= f.label "Height (cm)" %>
       <div class="row">
         <div class="col-md-2">
-          <%= f.text_field :height, class: "stats-text-field", id: "height-input" %><span>CM</span>
+          <%= f.text_field :height, class: "stats-text-field", id: "height-input" %>
         </div>
         <div class="col-md-10 ">
           <input class="slide" type="range" min="100" max="250" id="heightSlider" style="width: 95%">
         </div>
       </div>
     </div>
-    <div>
-      <%= f.label "Desired Weight Loss Rate" %>
+
+    <div class='category'>
+      <%= f.label "Desired Weight Loss Rate (lb/week)" %>
       <div class="row">
         <div class="col-md-2">
-          <%= f.text_field :weight_loss_rate, class: "stats-text-field", id: "weight-loss-input"  %><span>LB/wk</span>
+          <%= f.text_field :weight_loss_rate, class: "stats-text-field", id: "weight-loss-input"  %>
         </div>
         <div class="col-md-10 ">
           <input class="slide" type="range" min="0.5" max="3" step="0.1" id="weightLossSlider" style="width: 95%">
@@ -48,7 +52,7 @@
       </div>
     </div>
 
-    <div>
+    <div class='category'>
       <%= f.label "Activity Level" %><br>
       <%= f.text_field :activity_level, id: "activity-input"%>
       <div class="row activity-form">
@@ -72,7 +76,8 @@
         </div>
       </div>
     </div>
-    <div>
+
+    <div class='category'>
       <%= f.label "Sex" %><br>
       <%= f.text_field :sex, id: "sex-input"%>
       <div class="row activity-form">
@@ -87,10 +92,12 @@
       </div>
     </div>
 
-
     <div>
-      <%= f.submit "Update Stats", id: "stats-submit-btn", class: 'btn' %>
+      <%= f.submit "Save Stats", id: "stats-submit-btn", class: 'btn' %>
+      <%= f.submit "Save Stats", id: "stats-submit-btn1", class: 'btn' %>
     </div>
     <% end %>
+    <h1 id="results-message">You totaly daily energy expenditure (calories) is:</h1>
+
   </div>
 </div>

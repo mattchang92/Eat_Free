@@ -90,6 +90,8 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   margin-left: 40px;
   margin-right: 10px;
   width: 80px;
+  text-align: center;
+  font-size: 25px;
 }
 
 #activity-input {
@@ -128,10 +130,12 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 .activity {
   opacity: 0.6;
+  background-color: white;
 }
 
 .sex-box {
   opacity: 0.6;
+  background-color: white;
 }
 
 #sedentary:hover {
@@ -187,4 +191,41 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 .activity:hover #tooltiptext4 {
   display: block;
+}
+
+.category {
+  margin-top: 30px;
+}
+
+#stats-submit-btn {
+  margin: 50px 0;
+  width: 350px;
+  height: 75px;
+  border-radius: 60px;
+  background-color: rgb(4, 155, 255);
+  font-size: 30px;
+  color: white;
+}
+
+#stats-submit-btn1 {
+  margin: 50px 0;
+  width: 350px;
+  height: 75px;
+  border-radius: 60px;
+  border-color: rgb(4, 155, 255);
+  background-color: white;
+  font-size: 30px;
+  color: rgb(4, 155, 255);
+}
+
+#stats-submit-btn:hover {
+  opacity: 0.9;
+}
+
+#stats-submit-btn1:hover {
+  opacity: 0.8;
+}
+
+#results-message {
+  padding-bottom: 50px;
 }
