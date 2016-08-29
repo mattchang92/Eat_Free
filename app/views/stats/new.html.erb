@@ -36,7 +36,17 @@
         </div>
       </div>
     </div>
-
+    <div>
+      <%= f.label "Desired Weight Loss Rate" %>
+      <div class="row">
+        <div class="col-md-2">
+          <%= f.text_field :weight_loss_rate, class: "stats-text-field", id: "weight-loss-input"  %><span>LB/wk</span>
+        </div>
+        <div class="col-md-10 ">
+          <input class="slide" type="range" min="0.5" max="3" step="0.1" id="weightLossSlider" style="width: 95%">
+        </div>
+      </div>
+    </div>
 
     <div>
       <%= f.label "Activity Level" %><br>
@@ -77,17 +87,7 @@
       </div>
     </div>
 
-    <div>
-      <%= f.label :weight_loss %>
-      <div class="row">
-        <div class="col-md-2">
-          <%= f.text_field :weight_loss, class: "stats-text-field", id: "weight-loss-input"  %><span>LB/wk</span>
-        </div>
-        <div class="col-md-10 ">
-          <input class="slide" type="range" min="0.5" max="3" step="0.1" id="weightLossSlider" style="width: 95%">
-        </div>
-      </div>
-    </div>
+
     <div>
       <%= f.submit "Update Stats", id: "stats-submit-btn", class: 'btn' %>
     </div>

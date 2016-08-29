@@ -25,16 +25,12 @@ $(document).ready(function(){
   $('#age-input').val($('#ageSlider').val());
   $('#height-input').val($('#heightSlider').val());
   $('#weight-input').val($('#weightSlider').val());
+  $('#weight-loss-input').val($('#weightLossSlider').val());
 
    $("#myCarousel").carousel({
        interval : 5000,
        pause: false
    });
-
-  //  $('.flip-image1').hide();
-  //  $('.flip-image2').hide();
-  //  $('.home-footer').hide();
-
 
   var didScroll;
 
@@ -79,16 +75,19 @@ $(document).ready(function(){
     // }
   }
 
+    // Autoscrolls the recipe banner
     var recipeScroll = setInterval(function(){
       $('#photo-container').scrollLeft($('#photo-container').scrollLeft()+1);
     },15);
 
 
+    // Updates text fields with slider value
     $('.slide').mouseenter(function(){
       var checkSliderInput = setInterval(function(){
         $('#age-input').val($('#ageSlider').val());
         $('#height-input').val($('#heightSlider').val());
         $('#weight-input').val($('#weightSlider').val());
+        $('#weight-loss-input').val($('#weightLossSlider').val());
       },50);
 
       $('.slide').mouseleave(function(){
@@ -96,11 +95,13 @@ $(document).ready(function(){
       })
     });
 
+    // Updates slider value with text field input
     $('.stats-text-field').mouseenter(function(){
       var checkTextInput = setInterval(function(){
         $('#ageSlider').val($('#age-input').val());
         $('#heightSlider').val($('#height-input').val());
         $('#weightSlider').val($('#weight-input').val());
+        $('#weightLossSlider').val($('#weight-loss-input').val());
       },100);
 
       $('.stats-text-field').mouseleave(function(){
@@ -108,7 +109,7 @@ $(document).ready(function(){
       })
     });
 
-
+    // Button selection functionality for activity level
     $('#sedentary').click(function(){
       $('.activity').removeClass('option-selected');
       $('#activity-level-input').val(1.2);
@@ -133,6 +134,7 @@ $(document).ready(function(){
       $(this).addClass('option-selected');
     })
 
+    // Button selection functionality for sex
     $('#male').click(function(){
       $('.sex-box').removeClass('option-selected');
       $('#sex-input').val('male');
@@ -145,7 +147,18 @@ $(document).ready(function(){
       $(this).addClass('option-selected');
     })
 
+
+    // var checkWeight = setInterval(function(){
+    //   if ($('#weightLossSlider').val() > 2) {
+    //     confirm("Hello there");
+    //     clearInterval(checkWeight);
+    //   }
+    // }, 300)
+
+
 });
+
+
 
 // Allow droppable elements
 function allowDrop(ev) {

@@ -3,10 +3,11 @@ class CreateStats < ActiveRecord::Migration[5.0]
     create_table :stats do |t|
       t.integer :age
       t.string :sex
-      t.integer :weight
+      t.float :weight
       t.integer :height
-      t.integer :activity_level
+      t.float :activity_level
       t.integer :calories
+      t.float :weight_loss_rate
       t.references :user, foreign_key: true
 
       t.timestamps
