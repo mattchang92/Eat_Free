@@ -49,6 +49,9 @@ GEM
     autoprefixer-rails (6.4.0.2)
       execjs
     bcrypt (3.1.11)
+    bootstrap-glyphicons (0.0.1)
+      railties (>= 3.0)
+      sass (>= 3.2)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -69,6 +72,8 @@ GEM
     ffi (1.9.14)
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
+    font-awesome-sass (4.6.2)
+      sass (>= 3.2)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hirb (0.7.3)
@@ -173,12 +178,14 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  bootstrap-glyphicons
   bootstrap-sass (~> 3.3.6)
   byebug
   cancancan
   coffee-rails (~> 4.2)
   faker!
   font-awesome-rails
+  font-awesome-sass
   hirb
   jbuilder (~> 2.5)
   jquery-rails

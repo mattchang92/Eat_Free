@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'font-awesome-rails'
+gem 'bootstrap-glyphicons'
+gem 'font-awesome-sass'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'

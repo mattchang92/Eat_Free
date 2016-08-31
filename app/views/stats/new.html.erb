@@ -8,9 +8,16 @@
       <div class="row">
         <div class="col-md-2">
           <%= f.text_field :age, class: "stats-text-field", id: "age-input" %>
+          <!-- <input type="text" name="name" value="20" id="fake-age-input"> -->
         </div>
-        <div class="col-md-10 ">
-          <input class="slide" type="range" min="15" max="100" id="ageSlider" style="width: 95%">
+        <div class="col-md-10">
+          <div id="age-colored-slide" class="colored-slide">
+          </div>
+          <div  class="slide-background">
+          </div>
+          <div id="age-slider-thumb" class="thumb">
+          </div>
+          <input class="slide" type="range" min="20" max="100" value="20" step="0.1" id="ageSlider">
         </div>
       </div>
     </div>
@@ -23,7 +30,13 @@
           <!-- <span class="input-group-addon">.00</span> -->
         </div>
         <div class="col-md-10 ">
-          <input class="slide" type="range" min="30" max="200" step="0.1" id="weightSlider" style="width: 95%">
+          <div id="weight-colored-slide" class="colored-slide">
+          </div>
+          <div class="slide-background">
+          </div>
+          <div id="weight-slider-thumb" class="thumb">
+          </div>
+          <input class="slide" type="range" min="30" max="200" value="30" step="0.1" id="weightSlider" style="width: 95%">
         </div>
       </div>
     </div>
@@ -35,7 +48,13 @@
           <%= f.text_field :height, class: "stats-text-field", id: "height-input" %>
         </div>
         <div class="col-md-10 ">
-          <input class="slide" type="range" min="100" max="250" id="heightSlider" style="width: 95%">
+          <div id="height-colored-slide" class="colored-slide">
+          </div>
+          <div  class="slide-background">
+          </div>
+          <div id="height-slider-thumb" class="thumb">
+          </div>
+          <input class="slide" type="range" min="100" max="250" value="100" id="heightSlider" style="width: 95%">
         </div>
       </div>
     </div>
@@ -47,7 +66,13 @@
           <%= f.text_field :weight_loss_rate, class: "stats-text-field", id: "weight-loss-input"  %>
         </div>
         <div class="col-md-10 ">
-          <input class="slide" type="range" min="0.5" max="3" step="0.1" id="weightLossSlider" style="width: 95%">
+          <div id="loss-colored-slide" class="colored-slide">
+          </div>
+          <div class="slide-background">
+          </div>
+          <div id="loss-slider-thumb" class="thumb">
+          </div>
+          <input class="slide" type="range" min="0.5" max="3" value="0.5" step="0.1" id="weightLossSlider" style="width: 95%">
         </div>
       </div>
     </div>
@@ -55,23 +80,31 @@
     <div class='category'>
       <%= f.label "Activity Level" %><br>
       <%= f.text_field :activity_level, id: "activity-input"%>
-      <div class="row activity-form">
-        <div class="col-lg-10 col-lg-offset-1 row-fluid" >
-          <div class="col-lg-2 box activity " id="sedentary">
-            <h3>Sedentary</h3>
-            <span class="tooltiptext" id="tooltiptext1">Spend most of the day sitting (little or no exercise)</span>
+      <div class="container-fluid activity-form">
+        <div class="row" >
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="box activity" id="sedentary">
+              <h3 class="btn-title">Sedentary</h3>
+              <span class="tooltiptext" id="tooltiptext1">Spend most of the day sitting (little or no exercise)</span>
+            </div>
           </div>
-          <div class="col-lg-2 box activity " id="lightly-active">
-            <h3>Lightly Active</h3>
-            <span class="tooltiptext" id="tooltiptext1">Spend a good part of the day on your feet (light exercise 1-3 days/week)</span>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="box activity" id="lightly-active">
+              <h3 class="btn-title">Lightly Active</h3>
+              <span class="tooltiptext" id="tooltiptext2">Spend a good part of the day on your feet (light exercise 1-3 days/week)</span>
+            </div>
           </div>
-          <div class="col-lg-2 box activity " id="active">
-            <h3>Active</h3>
-            <span class="tooltiptext" id="tooltiptext1">Spend a good part of the day doing physical activity (exercise 6-7 days/week)</span>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="box activity" id="active">
+              <h3 class="btn-title">Active</h3>
+              <span class="tooltiptext" id="tooltiptext3">Spend a good part of the day doing physical activity (exercise 6-7 days/week)</span>
+            </div>
           </div>
-          <div class="col-lg-2 box activity " id="very-active">
-            <h3>Very Active</h3>
-            <span class="tooltiptext" id="tooltiptext1">Spend most of the day doing heavy physical activity (very heavy exercise or training 2x/ day)</span>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="box activity" id="very-active">
+              <h3 class="btn-title">Very Active</h3>
+              <span class="tooltiptext" id="tooltiptext4">Spend most of the day doing heavy physical activity (very heavy exercise or training 2x/ day)</span>
+            </div>
           </div>
         </div>
       </div>
@@ -80,13 +113,17 @@
     <div class='category'>
       <%= f.label "Sex" %><br>
       <%= f.text_field :sex, id: "sex-input"%>
-      <div class="row activity-form">
-        <div class="col-lg-10 col-lg-offset-1 row-fluid" >
-          <div class="col-lg-5 sex-box" id="male">
-            <h3>MALE</h3>
+      <div class="container-fluid activity-form">
+        <div class="row" >
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="sex-box box" id="male">
+              <h3 class="btn-title">MALE</h3>
+            </div>
           </div>
-          <div class="col-lg-5 sex-box" id="female">
-            <h3>FEMALE</h3>
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="sex-box box" id="female">
+              <h3 class="btn-title">FEMALE</h3>
+            </div>
           </div>
         </div>
       </div>
@@ -97,7 +134,12 @@
       <%= f.submit "Save Stats", id: "stats-submit-btn1", class: 'btn' %>
     </div>
     <% end %>
-    <h1 id="results-message">You totaly daily energy expenditure (calories) is:</h1>
-
+    <h1>You total daily energy expenditure (calories) is: <span id="daily-result"></span></h1>
+    <h1 id="results-message">For desired weight loss, daily calorie limit is: <span id="calorie-result"></span></h1>
   </div>
+
+  <div class="blue">
+    asdf
+  </div>
+
 </div>

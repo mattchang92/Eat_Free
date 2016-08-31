@@ -5,12 +5,14 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/css/bootstrap-slider.css">
 
 
 
   </head>
 
   <body>
+
     <div class="text container planner-header">
       <div class="section-header section-boxed apply-gradient" style="padding: 5px; padding-top: 50px">
         <nav class="navbar planner-navbar">
@@ -32,7 +34,10 @@
                     <a type="button" data-toggle="modal" data-target="#LogInModal">
                       Log In
                     </a></li>
-                  <li><%= link_to "Sign Up", new_user_path %></li>
+                  <li class="">
+                    <a type="button" data-toggle="modal" data-target="#SignUpModal">
+                      Sign Up
+                    </a></li>
                   <% end %>
                 </ul>
               </li>
@@ -42,8 +47,11 @@
   </div>
 </div>
 
+
+<%= render :partial => "project/signIn" %>
+<%= render :partial => "project/signUp" %>
+<%= render :partial => "project/movingNav" %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/css/bootstrap-slider.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/bootstrap-slider.js"></script>
 
 </body>
