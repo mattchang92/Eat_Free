@@ -67,6 +67,8 @@ input:-webkit-autofill {
   border-bottom-left-radius: 5px;
   &:hover {
     opacity: 0.8;
+    -webkit-transform: scale(1.03);
+    z-index: 2;
   }
 }
 
@@ -75,6 +77,8 @@ input:-webkit-autofill {
   border-bottom-right-radius: 5px;
   &:hover {
     opacity: 0.8;
+    -webkit-transform: scale(1.03);
+    z-index: 2;
   }
 }
 
@@ -160,7 +164,7 @@ input.slide {
 
 
 #stats-form-container {
-  background-color: white;
+  background-color: #DDE1E5;
   width: 80%;
   margin: auto;
   opacity: 0.9;
@@ -206,6 +210,10 @@ input.slide {
   border-radius: 20px;
   box-shadow: 0 0 5px 0 black;
   width: 80%;
+  &:hover {
+    -webkit-transform: scale(1.03);
+    opacity: 1;
+  }
 }
 
 .btn-title {
@@ -251,30 +259,6 @@ input.slide {
   display: block;
 }
 
-
-#sedentary:hover {
-  opacity: 1;
-}
-
-#lightly-active:hover {
-  opacity: 1;
-}
-
-#active:hover {
-  opacity: 1;
-}
-
-#very-active:hover {
-  opacity: 1;
-}
-
-#male:hover {
-  opacity: 1;
-}
-
-#female:hover {
-  opacity: 1;
-}
 
 .tooltiptext {
   width: 200px;

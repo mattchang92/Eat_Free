@@ -5,7 +5,7 @@ class StatsController < ApplicationController
   end
 
   def create
-    redirect_to root_path
+    redirect_to new_stat_path
   end
 
 

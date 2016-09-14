@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :stats, dependent: :destroy
+  has_many :foodlogs, dependent: :destroy
+
 
   # after_initialize :set_defaults
 

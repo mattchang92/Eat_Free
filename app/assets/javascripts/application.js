@@ -19,7 +19,7 @@
 
 
 
-// control carousel speed
+// control  speed
 $(document).ready(function(){
 
 
@@ -35,20 +35,12 @@ $(document).ready(function(){
        pause: false
    });
 
-  var didScroll;
-
-  $(window).scroll(function(event){
-      didScroll = true;
-  });
 
   setInterval(function() {
-      if (didScroll) {
-        hasScrolled();
-        didScroll = false;
-      }
+    Scrolled();
   }, 250);
 
-  function hasScrolled() {
+  function Scrolled() {
 
     // my Code
     if ($(this).scrollTop() > 200) {
@@ -58,30 +50,26 @@ $(document).ready(function(){
     }
 
     if ($(this).scrollTop() > 500) {
+      $('.flip-image1').css('visibility','visible');
       $('.flip-image1').show();
       $('.flip-image1').addClass('flipper');
+      $('.flip-image2').css('visibility','visible');
       $('.flip-image2').show();
       $('.flip-image2').addClass('flipper');
     } else {
-      $('.flip-image1').hide();
+      $('.flip-image1').fadeOut('slow');
       $('.flip-image1').removeClass('flipper');
-      $('.flip-image2').hide();
+      $('.flip-image2').fadeOut('slow');
       $('.flip-image2').removeClass('flipper');
     }
 
-    // if ($(this).scrollTop() > 800) {
-    //   $('.home-footer').fadeIn();
-    //   $('.home-footer').addClass('flipper');
-    // } else {
-    //   $('.home-footer').fadeOut();
-    //   $('.home-footer').remove('flipper');
-    // }
+
   }
 
     // Autoscrolls the recipe banner
-    var recipeScroll = setInterval(function(){
-      $('#photo-container').scrollLeft($('#photo-container').scrollLeft()+1);
-    },15);
+    // var recipeScroll = setInterval(function(){
+    //   $('#photo-container').scrollLeft($('#photo-container').scrollLeft()+1);
+    // },30);
 
     var checkAgeSliderLength = function(){
       var maxWidth = parseInt($('input.slide').css('width'));
@@ -305,12 +293,15 @@ $(document).ready(function(){
       $('#weight-label').html("Weight (kg)");
       $('#weightSlider').attr('min',40);
       $('#weightSlider').attr('max',150);
+      $('#weightSlider').val(40);
       $('#height-label').html("Height (cm)");
       $('#heightSlider').attr('min',100);
       $('#heightSlider').attr('max',250);
+      $('#heightSlider').val(100);
       $('#loss-label').html("Desired Weight Loss Rate (kg/week)");
       $('#weightLossSlider').attr('min',0.2);
       $('#weightLossSlider').attr('max',1.5);
+      $('#weightLossSlider').val(0.2);
     })
 
 
@@ -322,12 +313,15 @@ $(document).ready(function(){
       $('#weight-label').html("Weight (lb)");
       $('#weightSlider').attr('min',90);
       $('#weightSlider').attr('max',300);
+      $('#weightSlider').val(90);
       $('#height-label').html("Height (feet/inches)");
       $('#heightSlider').attr('min',48);
       $('#heightSlider').attr('max',84);
+      $('#heightSlider').val(48);
       $('#loss-label').html("Desired Weight Loss Rate (lb/week)");
       $('#weightLossSlider').attr('min',0.5);
       $('#weightLossSlider').attr('max',3);
+      $('#weightLossSlider').val(0.5);
     })
 
 

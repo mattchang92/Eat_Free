@@ -22,7 +22,8 @@
               <li class="home-link"><a href="/" class="link">HOME</a></li>
               <li class="home-link"><a href="#" class="link">ABOUT</a></li>
               <!-- <li><a href="#" class="link">RECIPES</a></li> -->
-              <li class="home-link"><a href="/planner" class="link">MEAL PLANNER</a></li>
+
+              <li class="home-link"><%= link_to "MEAL PLANNER", recipes_path, remote: true, class: "link" %></li>
               <li class="home-link">
                 <a href="#" class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %><span class="caret"></span></a>
                 <ul class="dropdown-menu">

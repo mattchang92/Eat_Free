@@ -8,8 +8,5 @@ class ProjectController < ApplicationController
   def test
   end
 
-  def planner
-  end
-
 
 end

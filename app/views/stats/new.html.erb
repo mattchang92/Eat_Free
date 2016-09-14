@@ -1,5 +1,5 @@
 <div style="height: 1000px" class="col-md-12" >
-  <div id="stats-form-container" style="background-color: #DDE1E5">
+  <div id="stats-form-container">
     <h1 style="padding-top: 50px">Enter Your Stats To Calculate Your Daily Calorie Requirements</h1>
     <%= form_for @stat do |f| %>
     <input type="text" name="units" value="metric" style="display: none" id=
@@ -13,6 +13,7 @@
       </div>
 
     </div>
+
     <div class='category'>
       <%= f.label :age %>
       <div class="row">
