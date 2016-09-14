@@ -36,6 +36,19 @@ $(document).ready(function(){
    });
 
 
+   // Autoscrolls the recipe banner
+   var recipeScroll = setInterval(function(){
+     $('.scrolling').scrollLeft($('.scrolling').scrollLeft()+1);
+   },30);
+
+   $('#photo-container').on('mouseenter',function(){
+     $(this).removeClass('scrolling');
+   })
+
+   $('#photo-container').on('mouseleave',function(){
+     $(this).addClass('scrolling');
+   })
+
   setInterval(function() {
     Scrolled();
   }, 250);
@@ -66,10 +79,7 @@ $(document).ready(function(){
 
   }
 
-    // Autoscrolls the recipe banner
-    // var recipeScroll = setInterval(function(){
-    //   $('#photo-container').scrollLeft($('#photo-container').scrollLeft()+1);
-    // },30);
+
 
     var checkAgeSliderLength = function(){
       var maxWidth = parseInt($('input.slide').css('width'));

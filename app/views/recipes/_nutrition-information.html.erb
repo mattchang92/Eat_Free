@@ -1,0 +1,42 @@
+<section class="nutrition-facts">
+  <header class="nutrition-facts_header">
+    <h1 class="nutrition-facts_title">Nutrition Facts</h1>
+    <p>Makes <%= @recipe.servings %> servings</p>
+  </header>
+  <table class="nutrition-facts__table">
+    <thead>
+      <tr>
+        <th colspan="3" class="">
+          <%= @recipe.calories %> Calories Per Serving
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+      <th colspan="2">
+        <b>Total Fat</b>
+      </th>
+      <td>
+        <b><%= @recipe.fats.to_i %>g</b>
+      </td>
+    </tr>
+      <th colspan="2">
+        <b>Total Carbohydrate</b>
+      </th>
+      <td>
+        <b><%= @recipe.carbs.to_i %>g</b>
+      </td>
+    </tr>
+
+    <tr class="thick-end">
+      <th colspan="2">
+        <b>Protein</b>
+      </th>
+      <td>
+        <b><%= @recipe.proteins.round.to_i %>g</b>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</section>

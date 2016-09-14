@@ -7,8 +7,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/css/bootstrap-slider.css">
 
-
-
   </head>
 
   <body>
@@ -25,7 +23,10 @@
 
               <li class="home-link"><%= link_to "MEAL PLANNER", recipes_path, remote: true, class: "link" %></li>
               <li class="home-link">
-                <a href="#" class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %><span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %>
+                  <span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu">
                   <% if user_signed_in? %>
                   <li><%= link_to "My Profile", new_stat_path %></li>

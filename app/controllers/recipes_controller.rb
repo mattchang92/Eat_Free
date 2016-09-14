@@ -1,23 +1,19 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show]
 
-  # GET /recipes
-  # GET /recipes.json
   def index
     @meal_plan = []
     @recipes = Recipe.all
+    @foodlog = Foodlog.where("created_at >= ?", Time.zone.now.beginning_of_day)
     respond_to do |format|
       format.html {render :index}
       format.js { render :index }
     end
   end
 
-  # GET /recipes/1
-  # GET /recipes/1.json
   def show
-    @recipe = Recipe.find params[:id]
     respond_to do |format|
-      format.js {render 'show_modal'}
+      format.js {render 'showRecipeModal'}
     end
   end
 
