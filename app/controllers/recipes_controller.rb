@@ -2,7 +2,6 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show]
 
   def index
-    @meal_plan = []
     @recipes = Recipe.all
     @foodlog = Foodlog.where("created_at >= ?", Time.zone.now.beginning_of_day)
     respond_to do |format|

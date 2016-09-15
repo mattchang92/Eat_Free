@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new,:create] do
     delete :destroy, on: :collection
   end
-  resources :recipes, only: [:show, :index]
-  resources :foodlogs, only: [:create, :destroy]
+  resources :recipes, only: [:show, :index] do
+    resources :foodlogs, only: [:create]
+  end
+  resources :foodlogs, only: [:destroy, :edit]
 
 end

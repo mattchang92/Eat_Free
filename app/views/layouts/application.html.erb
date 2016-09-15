@@ -4,7 +4,7 @@
     <title>ProjectRoughDraft</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/css/bootstrap-slider.css">
 
   </head>
@@ -46,14 +46,15 @@
             </ul>
           </nav>
     <%= yield %>
+      </div>
+    </div>
   </div>
 </div>
-
 
 <%= render :partial => "project/signIn" %>
 <%= render :partial => "project/signUp" %>
 <%= render :partial => "project/movingNav" %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/bootstrap-slider.js"></script>
 
 </body>

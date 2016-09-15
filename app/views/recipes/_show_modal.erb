@@ -1,7 +1,7 @@
 <!-- Food Log Modal -->
 <div class="modal fade" id="foodLogModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="width: 700px; height: 500px">
+    <div class="modal-content" style="width: 700px; height: 550px">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Add Recipe?</h4>
@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <% if @recipe %>
-          <%= form_tag foodlogs_path do %>
+          <%= form_tag recipe_foodlogs_path(@recipe) do %>
             <div class="recipe-info row">
               <h3><%= @recipe.name %></h3>
               <div class="col-xs-4">
@@ -18,6 +18,9 @@
               <div class="col-xs-8">
                 <img src="<%= @recipe.photo %>" alt="" style="width: 350px; height: 233px"/>
               </div>
+            </div>
+            <div class="">
+              <h3>I want to make <%= text_field_tag :servings, "0", class: "servings-input" %> servings.</h3>
             </div>
             <hr style="margin: 15px 0">
             <%= submit_tag "Add Recipe To Today's Meal Plan", class: "btn btn-primary log-in-button" %>
