@@ -73,7 +73,8 @@
 #plan-area {
   border: thick solid black;
   width: 85%;
-  margin: 10px auto;
+  margin-top: 50px;
+  margin-bottom: 120px;
   background-color: white;
   min-height: 600px;
 }
@@ -126,14 +127,23 @@ ol.recipe-directions {
 // Daily Progress Styling
 
 .daily-progress {
+  position: fixed;
   border: solid thin black;
-  margin: 50px auto;
-  padding: 40px;
+  width: 100%;
+  background-color: white;
+  opacity: 0.9;
+  color: black;
+  transition: top 1.5s;
+}
+
+
+.progress-bar {
+  max-width: 100%;
 }
 
 .progress {
-  width: 80%;
-  margin: auto;
+  margin: 20px 0;
+  height: 30px;
 }
 
 // Styling for recipe selection modal

@@ -23,6 +23,7 @@
 $(document).ready(function(){
 
   $('#myCarousel').height($(window).height());
+  $('.daily-progress').css('top',$(window).height());
 
   $('#age-input').val("20");
   $('#height-input').val("100");
@@ -49,6 +50,8 @@ $(document).ready(function(){
      $(this).addClass('scrolling');
    })
 
+
+
   setInterval(function() {
     // my Code
     if ($(this).scrollTop() > 200) {
@@ -70,6 +73,15 @@ $(document).ready(function(){
       $('.flip-image2').fadeOut('slow');
       $('.flip-image2').removeClass('flipper');
     }
+
+    $(window).scroll(function(){
+      if ($(this).scrollTop() > $(this).height() * 0.5 ){
+        $('.daily-progress').css('top',$(window).height() - $('.daily-progress').height());
+      } else {
+        $('.daily-progress').css('top',$(window).height());
+      }
+    })
+
   }, 250);
 
 
