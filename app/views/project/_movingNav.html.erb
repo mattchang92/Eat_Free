@@ -11,7 +11,7 @@
 <nav id="moving-navbar" class="navbar navbar-inverse test-header ">
   <ul class="nav navbar-nav moving-nav">
     <li class="pull-right">
-      <a href="#" class="dropdown-toggle moving-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %><span class="caret"></span></a>
+      <a href="#" style="padding-bottom: 0; background: none" class="dropdown-toggle moving-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %><span class="caret"></span></a>
       <ul class="dropdown-menu">
         <% if user_signed_in? %>
         <li><%= link_to "My Profile", new_stat_path %></li>
@@ -28,8 +28,8 @@
         <% end %>
       </ul>
     </li>
-    <li class="pull-right"><a href="/recipes" class="moving-link">MEAL PLANNER</a></li>
-    <li class="pull-right"><a href="#" class="moving-link">ABOUT</a></li>
-    <li class="pull-right"><a href="#" class="moving-link">HOME</a></li>
+    <li class="pull-right"><a href="/recipes" style="padding-bottom: 0"class="moving-link">MEAL PLANNER</a></li>
+    <li class="pull-right"><a href="#" style="padding-bottom: 0"class="moving-link">ABOUT</a></li>
+    <li class="pull-right"><a href="#" style="padding-bottom: 0" class="moving-link">HOME</a></li>
   </ul>
 </nav>

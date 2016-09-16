@@ -3,11 +3,17 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-    @foodlog = Foodlog.where("created_at >= ?", Time.zone.now.beginning_of_day)
-    respond_to do |format|
-      format.html {render :index}
-      format.js { render :index }
-    end
+    @foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+    @calorie_limit = current_user.stats.last.calories
+    @calories = daily_calories
+    @carbs = carbs_calories
+    @fats = fats_calories
+    @proteins = proteins_calories
+    @total = 1 + @carbs + @fats + @proteins
+    # respond_to do |format|
+    #   format.html {render :index}
+    #   # format.js { render :index }
+    # end
   end
 
   def show
@@ -64,6 +70,43 @@ class RecipesController < ApplicationController
   #     format.json { head :no_content }
   #   end
   # end
+
+  def daily_calories
+    calories = 0
+    foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+    foodlog.each do |meal|
+      calories += (meal.recipe.calories * meal.servings)
+    end
+    return calories
+  end
+
+  def carbs_calories
+    carbs = 0
+    foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+    foodlog.each do |meal|
+      carbs += (meal.recipe.carbs * meal.servings)
+    end
+    return carbs * 4
+  end
+
+  def fats_calories
+    fats = 0
+    foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+    foodlog.each do |meal|
+    fats += (meal.recipe.fats * meal.servings)
+    end
+    return fats * 9
+  end
+
+  def proteins_calories
+    proteins = 0
+    foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+    foodlog.each do |meal|
+      proteins += (meal.recipe.proteins * meal.servings)
+    end
+    return proteins * 4
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

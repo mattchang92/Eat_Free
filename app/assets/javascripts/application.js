@@ -22,7 +22,7 @@
 // control  speed
 $(document).ready(function(){
 
-
+  $('#myCarousel').height($(window).height());
 
   $('#age-input').val("20");
   $('#height-input').val("100");
@@ -50,11 +50,6 @@ $(document).ready(function(){
    })
 
   setInterval(function() {
-    Scrolled();
-  }, 250);
-
-  function Scrolled() {
-
     // my Code
     if ($(this).scrollTop() > 200) {
       $('.test-header').addClass('nav-down');
@@ -62,7 +57,7 @@ $(document).ready(function(){
       $('.test-header').removeClass('nav-down').addClass('nav-up');
     }
 
-    if ($(this).scrollTop() > 500) {
+    if ($(this).scrollTop() > $(window).height()/2) {
       $('.flip-image1').css('visibility','visible');
       $('.flip-image1').show();
       $('.flip-image1').addClass('flipper');
@@ -75,9 +70,11 @@ $(document).ready(function(){
       $('.flip-image2').fadeOut('slow');
       $('.flip-image2').removeClass('flipper');
     }
+  }, 250);
 
 
-  }
+
+
 
 
 
@@ -217,6 +214,7 @@ $(document).ready(function(){
     $(window).click(function(){
       $('#calorie-result').html(calculateCalories() - calculateDeficit());
       $('#daily-result').html(calculateCalories());
+      $('#calories-input').val(calculateCalories() - calculateDeficit());
     })
 
     // Updates text fields with slider value
@@ -386,20 +384,3 @@ $(document).ready(function(){
 
 
 });
-
-
-
-// Allow droppable elements
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-}

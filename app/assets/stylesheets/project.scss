@@ -32,12 +32,11 @@
 .moving-nav li {
 }
 
-.moving-link {
-  color: white !important;
+a.moving-link {
   width: 100%;
   font-family: Avenir;
   font-size: 20px;
-  padding-bottom: 0px !important;
+  padding-bottom: 0px ;
   width: auto;
   opacity: 1;
 }
@@ -67,17 +66,19 @@ li.pull-right {
   margin: auto 20px;
 }
 
+
+
 .flip-image1 {
   background: url("dumbbells.jpg");
   background-size: cover;
-  height: 500px;
+  height: auto;
   text-align: center;
 }
 
 .flip-image2 {
   background: url("apple.jpg");
   background-size: cover;
-  height: 500px;
+  height: auto;
   text-align: center;
 }
 
@@ -110,23 +111,28 @@ li.pull-right {
 }
 
 
-i {
-  font-size: 40px !important;
+i.fa {
+  font-size: 30px;
 }
 
 .home-footer {
   position: absolute;
   background-color: black;
+  color: white;
   height: 200px;
   width: 100%;
-  top: 1370px;
-  line-height: 200px;
+  line-height: 20%;
   text-align: center;
+  h3 {
+    font-family: "Muli", sans-serif;
+  }
 }
 
 div.home-footer a {
-  margin: 0 50px;
   color: white;
+  i {
+    margin: 30px;
+  }
 }
 
 .flip-image1:hover {

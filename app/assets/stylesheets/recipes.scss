@@ -75,6 +75,7 @@
   width: 85%;
   margin: 10px auto;
   background-color: white;
+  min-height: 600px;
 }
 
 .meal-plan-image {
@@ -126,9 +127,14 @@ ol.recipe-directions {
 
 .daily-progress {
   border: solid thin black;
-  margin-top: 50px;
+  margin: 50px auto;
+  padding: 40px;
 }
 
+.progress {
+  width: 80%;
+  margin: auto;
+}
 
 // Styling for recipe selection modal
 .servings-input {
