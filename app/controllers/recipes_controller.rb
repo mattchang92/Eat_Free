@@ -10,10 +10,6 @@ class RecipesController < ApplicationController
     @fats = fats_calories
     @proteins = proteins_calories
     @total = 1 + @carbs + @fats + @proteins
-    # respond_to do |format|
-    #   format.html {render :index}
-    #   # format.js { render :index }
-    # end
   end
 
   def show

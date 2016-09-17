@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/css/bootstrap-slider.css">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
   </head>
 
@@ -21,7 +20,7 @@
               <li class="home-link"><a href="#" class="link">ABOUT</a></li>
               <!-- <li><a href="#" class="link">RECIPES</a></li> -->
 
-              <li class="home-link"><%= link_to "MEAL PLANNER", recipes_path, remote: true, class: "link" %></li>
+              <li class="home-link"><%= link_to "MEAL PLANNER", recipes_path, class: "link", %></li>
               <li class="home-link">
                 <a href="#" class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   <%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %>
