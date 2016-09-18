@@ -8,7 +8,7 @@ class StatsController < ApplicationController
     @stat = Stat.new stat_params
       @stat.user = current_user
       if @stat.save
-        redirect_to new_stat_path, notice: "Question created successfully"
+        redirect_to new_stat_path, notice: "Stats saved!"
       else
         render :new
       end

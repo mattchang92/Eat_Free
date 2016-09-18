@@ -1,7 +1,8 @@
 <div style="height: 1000px" class="col-md-12" >
   <div id="stats-form-container">
     <div class="flash-message">
-      <h3 style="padding-top: 20px; color: red"> <%= flash[:notice] || flash[:alert]%></h3> 
+      <h3 style="padding-top: 20px; color: red"> <%= flash[:alert]%></h3>
+      <h3 style="padding-top: 20px; color: green"> <%= flash[:notice]%></h3> 
     </div>
     <h1 style="padding-top: 50px">Enter Your Stats To Calculate Your Daily Calorie Requirements</h1>
     <%= form_for @stat do |f| %>
