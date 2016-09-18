@@ -2,14 +2,18 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show]
 
   def index
-    @recipes = Recipe.all
-    @foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
-    @calorie_limit = current_user.stats.last.calories
-    @calories = daily_calories
-    @carbs = carbs_calories
-    @fats = fats_calories
-    @proteins = proteins_calories
-    @total = 1 + @carbs + @fats + @proteins
+    if current_user.stats.last.present?
+      @recipes = Recipe.all
+      @foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+      @calorie_limit = current_user.stats.last.calories
+      @calories = daily_calories
+      @carbs = carbs_calories
+      @fats = fats_calories
+      @proteins = proteins_calories
+      @total = 1 + @carbs + @fats + @proteins
+    else
+      redirect_to new_stat_path, alert: "You must enter your stats first to use the meal planner"
+    end
   end
 
   def show

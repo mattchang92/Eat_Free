@@ -32,9 +32,9 @@
             <li class="home-link"><a href="/test" class="link">ABOUT</a></li>
             <!-- <li><a href="#" class="link">RECIPES</a></li> -->
             <% if user_signed_in? %>
-              <li class="home-link"><a href="/recipes" class="link">MEAL PLANNER</a></li>
+              <li class="home-link"><%= link_to "MEAL PLANNER", recipes_path, class: "link" %></li>
             <% else %>
-              <li class="home-link"><a data-toggle="modal" data-target="#LogInModal" class="link">MEAL PLANNER</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#LogInModal" class="link">MEAL PLANNER</a></li>
             <% end %>
             <li class="home-link">
               <a href="#" class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %><span class="caret"></span></a>
