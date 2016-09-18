@@ -19,7 +19,14 @@
       <h5>Carbs: <span id="carbs-display"><%= (@carbs / @total * 100).round(1) %>%</span></h5>
     </div>
     <div>
-      <h5>Proteins: <span id="proteins-display"><%= ((@total - @fats - @carbs) / @total * 100).round(1) %>%</span></h5>
+      <h5>Proteins:
+        <span id="proteins-display">
+          <% if @total = 1 %>
+            0.0%
+          <% else %>
+            <%= ((@total - @fats - @carbs) / @total * 100).round(1) %>%
+          <% end %>
+        </span></h5>
     </div>
   </div>
 </div>
