@@ -4,7 +4,7 @@
     <title>ProjectRoughDraft</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag   'application', media: 'all'%>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
   </head>
 
@@ -20,7 +20,7 @@
               <li class="home-link"><a href="#" class="link">ABOUT</a></li>
               <!-- <li><a href="#" class="link">RECIPES</a></li> -->
 
-              <li class="home-link"><%= link_to "MEAL PLANNER", recipes_path, class: "link", %></li>
+              <li class="home-link"><%= link_to "MEAL PLANNER", recipes_path, class: "link" %></li>
               <li class="home-link">
                 <a href="#" class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   <%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %>
@@ -53,7 +53,7 @@
 <%= render :partial => "project/signIn" %>
 <%= render :partial => "project/signUp" %>
 <%= render :partial => "project/movingNav" %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
+<%= javascript_include_tag 'application'%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.2.0/bootstrap-slider.js"></script>
 
 </body>

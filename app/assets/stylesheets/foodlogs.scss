@@ -1,3 +1,11 @@
 // Place all the styles related to the foodlogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#calorie-bar {
+  transition: width 3s;
+}
+
+.progress-bar {
+  transition: width 3s;
+}

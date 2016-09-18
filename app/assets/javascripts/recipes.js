@@ -24,7 +24,7 @@ $(document).ready(function(){
   setInterval(function() {
 
     $(window).scroll(function(){
-      if ($(this).scrollTop() > $(this).height() * 0.5 ){
+      if ($(this).scrollTop() > $(this).height() * 0.025 ){
         $('.daily-progress').css('top',$(window).height() - $('.daily-progress').height());
       } else {
         $('.daily-progress').css('top',$(window).height());

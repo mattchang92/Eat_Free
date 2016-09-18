@@ -16,10 +16,6 @@
  -->
   </div>
 
-  <div id="showFoodLogModal">
-    <%= render "show_modal" %>
-  </div>
-
 
   </div>
   <div id="plan-area" class="row" >
@@ -36,31 +32,11 @@
 </div>
 
 
+<div id="showFoodLogModal">
+  <%= render "show_modal" %>
+</div>
+
 
 <div class="daily-progress">
-  <div class="row">
-
-    <div class="col-sm-9">
-      <h3 style="margin: 10px 0 0 0">Calories consumed: <%= @calories %>/<%= @calorie_limit %></h3>
-      <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-        aria-valuemin="0" aria-valuemax="100" style="width:<%= (@calories * 100 / @calorie_limit).round(1) %>%; line-height: 30px">
-          <%= (@calories * 100 / @calorie_limit  ).round(1) %>%
-        </div>
-      </div>
-
-    </div>
-    <div class="col-sm-3">
-      <h4>Calorie Composition:</h4>
-      <div>
-        <h5>Fats: <%= (@fats / @total * 100).round(1) %>%</h5>
-      </div>
-      <div>
-        <h5>Carbs: <%= (@carbs / @total * 100).round(1) %>%</h5>
-      </div>
-      <div>
-        <h5>Proteins: <%= (@proteins / @total * 100).round(1) %>%</h5>
-      </div>
-    </div>
-  </div>
+  <%= render 'progress' %>
 </div>

@@ -1,6 +1,43 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+
+    def daily_calories
+      calories = 0
+      foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+      foodlog.each do |meal|
+        calories += (meal.recipe.calories * meal.servings)
+      end
+      return calories
+    end
+
+    def carbs_calories
+      carbs = 0
+      foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+      foodlog.each do |meal|
+        carbs += (meal.recipe.carbs * meal.servings)
+      end
+      return carbs * 4
+    end
+
+    def fats_calories
+      fats = 0
+      foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+      foodlog.each do |meal|
+      fats += (meal.recipe.fats * meal.servings)
+      end
+      return fats * 9
+    end
+
+    def proteins_calories
+      proteins = 0
+      foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+      foodlog.each do |meal|
+        proteins += (meal.recipe.proteins * meal.servings)
+      end
+      return proteins * 4
+    end
+
   def user_signed_in?
     session[:user_id].present?
   end
