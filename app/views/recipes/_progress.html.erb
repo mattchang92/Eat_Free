@@ -1,7 +1,7 @@
 <div class="row">
 
   <div class="col-sm-9">
-    <h3 style="margin: 10px 0 0 0">Calories consumed: <span id="calorie-display"><%= @calories %></span>/<span id="calorie-limit"><%= @calorie_limit %></span></h3>
+    <h3 style="margin: 10px 0 0 0">Today's Calorie Goals: <span id="calorie-display"><%= @calories %></span>/<span id="calorie-limit"><%= @calorie_limit %></span></h3>
     <div class="progress">
       <div id="calorie-bar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
       aria-valuemin="0" aria-valuemax="100" style="width:<%= (@calories * 100 / @calorie_limit).round(1) %>%; line-height: 30px">

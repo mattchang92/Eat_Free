@@ -1,4 +1,5 @@
 $("#meals").prepend("<%= j(render('/foodlogs/foodlog', {meal: @foodlog})) %>");
+
 $("#calorie-bar").css('width', '<%= (@calories * 100 / @calorie_limit).round(1) %>%');
 $("#fats-bar").css('width', '<%= (@fats * 100 / @total).round(1) %>%');
 $("#fats-display").html('<%= (@fats * 100 / @total).round(1) %>%');

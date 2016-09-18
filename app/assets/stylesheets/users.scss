@@ -293,10 +293,14 @@ input.slide {
   background-color: rgb(4, 155, 255);
   font-size: 30px;
   color: white;
+  &:hover {
+    opacity: 0.9;
+    -webkit-transform: scale(1.03);
+    box-shadow: 1px 1px 4px 0 black;
+  }
 }
 
 #stats-submit-btn:hover {
-  opacity: 0.9;
 }
 
 #results-message {

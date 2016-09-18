@@ -1,33 +1,34 @@
-<div class="row" id="<%= dom_id(meal) %>"> 
-
-  <div class="col-md-4">
-  <div class="">
-    <h3><%= meal.recipe.name %></h3>
-    <img src="<%= meal.recipe.photo %>" alt="" class="meal-plan-image" />
-  </div>
-  <%= link_to "Edit Servings", foodlog_path(meal), method: :delete, class: 'edit-meal-button' %>
-  <%= link_to "Remove", foodlog_path(meal), method: :delete, remote: true, class: 'remove-meal-button' %>
-</div>
-  <div class="col-md-8">
-    <div class="col-xs-6">
-      <h3>Ingredients</h3>
-      <h5>(Makes <%= pluralize meal.recipe.servings, "serving" %>)</h5>
-      <ul class="recipe-ingredients">
-        <% meal.recipe.ingredients.split(",").each do |ingred| %>
+<div id="<%= dom_id(meal) %>" >
+  <div class="row">
+    <div class="col-md-4">
+      <div class="">
+        <h3><%= meal.recipe.name %></h3>
+        <img src="<%= meal.recipe.photo %>" alt="" class="meal-plan-image" />
+      </div>
+      <%= link_to "Edit Servings", foodlog_path(meal), method: :delete, class: 'edit-meal-button' %>
+      <%= link_to "Remove", foodlog_path(meal), method: :delete, remote: true, class: 'remove-meal-button' %>
+    </div>
+    <div class="col-md-8">
+      <div class="col-xs-6">
+        <h3>Ingredients</h3>
+        <h5>(Makes <%= pluralize meal.recipe.servings, "serving" %>)</h5>
+        <ul class="recipe-ingredients">
+          <% meal.recipe.ingredients.split(",").each do |ingred| %>
           <li><%= ingred %></li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="col-xs-6">
-      <h3>Cooking Directions</h3>
-      <h5>(Makes <%= pluralize meal.recipe.servings, "serving" %>)</h5>
-      <ol class='recipe-directions'>
-        <% meal.recipe.directions.split("/").each do |direct| %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-xs-6">
+        <h3>Cooking Directions</h3>
+        <h5>(Makes <%= pluralize meal.recipe.servings, "serving" %>)</h5>
+        <ol class='recipe-directions'>
+          <% meal.recipe.directions.split("/").each do |direct| %>
           <li><%= direct %></li>
-        <% end %>
-      </ol>
+          <% end %>
+        </ol>
+      </div>
+      <h3><%= pluralize meal.servings, "serving" %> will total <%= meal.servings * meal.recipe.calories %> calories</h3>
     </div>
-    <h3><%= pluralize meal.servings, "serving" %> will total <%= meal.servings * meal.recipe.calories %> calories</h3>
   </div>
+  <hr>
 </div>
-<hr>
