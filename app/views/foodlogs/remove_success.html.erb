@@ -1,12 +1,6 @@
 $("#foodlog_<%= params[:id] %>").fadeOut('slow');
 $("#calorie-bar").css('width', '<%= (@calories * 100 / @calorie_limit).round(1) %>%');
-$("#fats-bar").css('width', '<%= (@fats * 100 / @total).round(1) %>%');
 $("#fats-display").html('<%= (@fats * 100 / @total).round(1) %>%');
-
-$("#carbs-bar").css('width', '<%= (@carbs * 100 / @total).round(1) %>%');
 $("#carbs-display").html('<%= (@carbs * 100 / @total).round(1) %>%');
-
-$("#proteins-bar").css('width', '<%= (@proteins * 100 / @total).round(1) %>%');
 $("#proteins-display").html('<%= (@proteins * 100 / @total).round(1) %>%');
-
 $("#calorie-display").html('<%= @calories %>');

@@ -69,60 +69,7 @@
   text-shadow: 1px 1px white;
 }
 
-// Styling for meal plan area
-#plan-area {
-  border: thick solid black;
-  width: 85%;
-  margin-top: 50px;
-  margin-bottom: 120px;
-  background-color: white;
-  min-height: 600px;
-}
 
-.meal-plan-image {
-  width: 90%;
-  // float: right;
-  margin-bottom: 15px;
-}
-
-ul.recipe-ingredients {
-  text-align: left;
-}
-
-ol.recipe-directions {
-  text-align: left;
-}
-
-.remove-meal-button {
-  border: 1px solid black;
-  border-radius: 3px;
-  font-size: 20px;
-  padding: 5px;
-  background-color: red;
-  box-shadow: 0px 0px 3px black;
-  text-shadow: 1px 1px 3px white;
-  &:hover {
-    color: black;
-    background-color: red;
-  }
-}
-
-.remove-meal-button:hover {
-  -webkit-transform: scale(1.05);
-  box-shadow: 1px 1px 3px black;
-  margin-top: -2px
-}
-
-.edit-meal-button {
-  border: 1px solid black;
-  border-radius: 3px;
-  font-size: 20px;
-  padding: 5px;
-  background-color: #18E8DD;
-  box-shadow: 0px 0px 3px black;
-  text-shadow: 1px 1px 3px white;
-
-}
 
 // Daily Progress Styling
 
@@ -136,7 +83,6 @@ ol.recipe-directions {
   transition: top 1.5s;
 }
 
-
 .progress-bar {
   max-width: 100%;
 }
@@ -145,6 +91,7 @@ ol.recipe-directions {
   margin: 20px 0;
   height: 30px;
 }
+
 
 // Styling for recipe selection modal
 .servings-input {
@@ -216,4 +163,32 @@ ol.recipe-directions {
 }
 .thin-end {
   border-bottom: 1px solid black;
+}
+
+/* The alert message box */
+.alert {
+  position: fixed;
+  display: none;
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+  z-index: 10;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 40px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
 }

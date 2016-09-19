@@ -4,6 +4,7 @@ $(document).ready(function(){
   $('#height-input').val("100");
   $('#weight-input').val("30");
   $('#weight-loss-input').val("0.5");
+  $('.stats-text-field').css('margin-left',$('.colored-slide').css('margin-left'));
 
   var checkAgeSliderLength = function(){
     var maxWidth = parseInt($('input.slide').css('width'));
@@ -60,33 +61,46 @@ $(document).ready(function(){
 
 
   // Updates 'fake' slider (width + color) and thumb position when 'real' slider is moved
-  $('#ageSlider').on('input change mousemove',function(){
+  var updateAgeSlider = function(){
     var $element = $('#ageSlider');
     $('#age-colored-slide').css('background-color', "rgb(" + getColorRed($element) + "," + getColorGreen($element) + ",255)");
     $('#age-colored-slide').css('width',parseInt(checkAgeSliderLength())+4+'px');
     $('#age-slider-thumb').css('left',checkAgeSliderLength());
-  });
+  };
 
-  $('#weightSlider').on("input mousemove",function(){
+  var updateWeightSlider = function(){
     var $element = $('#weightSlider');
     $('#weight-colored-slide').css('background-color', "rgb(" + getColorRed($element) + "," + getColorGreen($element) + ",255)");
     $('#weight-colored-slide').css('width',parseInt(checkWeightSliderLength())+4+'px');
     $('#weight-slider-thumb').css('left',checkWeightSliderLength());
-  });
+  };
 
-
-  $('#heightSlider').on("input mousemove",function(){
+  var updateHeightSlider = function(){
     var $element = $('#heightSlider');
     $('#height-colored-slide').css('background-color', "rgb(" + getColorRed($element) + "," + getColorGreen($element) + ",255)");
     $('#height-colored-slide').css('width',parseInt(checkHeightSliderLength())+4+'px');
     $('#height-slider-thumb').css('left',checkHeightSliderLength());
-  });
+  }
 
-  $('#weightLossSlider').on("input mousemove",function(){
+  var updateLossSlider = function(){
     var $element = $('#weightLossSlider');
     $('#loss-colored-slide').css('background-color', "rgb(" + getColorRed($element) + "," + getColorGreen($element) + ",255)");
     $('#loss-colored-slide').css('width',parseInt(checkLossSliderLength())+4+'px');
     $('#loss-slider-thumb').css('left',checkLossSliderLength());
+  }
+
+
+  $('#ageSlider').on('input change mousemove',function(){
+    updateAgeSlider();
+  });
+  $('#weightSlider').on("input mousemove",function(){
+    updateWeightSlider();
+  });
+  $('#heightSlider').on("input mousemove",function(){
+    updateHeightSlider();
+  });
+  $('#weightLossSlider').on("input mousemove",function(){
+    updateLossSlider();
   });
 
   // Updates slider and position of thumb on page resize
@@ -184,44 +198,54 @@ $(document).ready(function(){
     $(this).addClass('option-selected');
   })
 
-
   // Units selection
-  $('#metric').click(function(){
-    $('#imperial').removeClass('units-selected');
-    $('#units-select').val('metric');
-    $(this).addClass('units-selected');
-    $('#weight-label').html("Weight (kg)");
-    $('#weightSlider').attr('min',40);
-    $('#weightSlider').attr('max',150);
-    $('#weightSlider').val(40);
-    $('#height-label').html("Height (cm)");
-    $('#heightSlider').attr('min',100);
-    $('#heightSlider').attr('max',250);
-    $('#heightSlider').val(100);
-    $('#loss-label').html("Desired Weight Loss Rate (kg/week)");
-    $('#weightLossSlider').attr('min',0.2);
-    $('#weightLossSlider').attr('max',1.5);
-    $('#weightLossSlider').val(0.2);
-  })
+  $('#units-selection-box').click(function(){
 
+    $('#units-btn').toggleClass('units-btn-moved');
 
+    if ($('#units-select').val() == 'metric') {
+      $('#units-select').val('imperial');
+      $('#weight-label').html("Weight (lb)");
+      $('#weightSlider').attr('min',90);
+      $('#weightSlider').attr('max',300);
+      $('#weightSlider').val(90);
+      $('#height-label').html("Height (feet/inches)");
+      $('#heightSlider').attr('min',48);
+      $('#heightSlider').attr('max',84);
+      $('#heightSlider').val(48);
+      $('#loss-label').html("Desired Weight Loss Rate (lb/week)");
+      $('#weightLossSlider').attr('min',0.5);
+      $('#weightLossSlider').attr('max',3);
+      $('#weightLossSlider').val(0.5);
+    } else {
+      $('#units-select').val('metric');
+      $('#weight-label').html("Weight (kg)");
+      $('#weightSlider').attr('min',40);
+      $('#weightSlider').attr('max',150);
+      $('#weightSlider').val(40);
+      $('#height-label').html("Height (cm)");
+      $('#heightSlider').attr('min',100);
+      $('#heightSlider').attr('max',250);
+      $('#heightSlider').val(100);
+      $('#loss-label').html("Desired Weight Loss Rate (kg/week)");
+      $('#weightLossSlider').attr('min',0.2);
+      $('#weightLossSlider').attr('max',1.5);
+      $('#weightLossSlider').val(0.2);
+    }
+    $('#age-input').val(parseInt($('#ageSlider').val()));
+    $('#weight-input').val($('#weightSlider').val());
+    $('#height-input').val($('#heightSlider').val());
+    $('#weight-loss-input').val($('#weightLossSlider').val());
+    updateHeightSlider();
+    updateWeightSlider();
+    updateLossSlider();
 
-  $('#imperial').click(function(){
-    $('#metric').removeClass('units-selected');
-    $('#units-select').val('imperial');
-    $(this).addClass('units-selected');
-    $('#weight-label').html("Weight (lb)");
-    $('#weightSlider').attr('min',90);
-    $('#weightSlider').attr('max',300);
-    $('#weightSlider').val(90);
-    $('#height-label').html("Height (feet/inches)");
-    $('#heightSlider').attr('min',48);
-    $('#heightSlider').attr('max',84);
-    $('#heightSlider').val(48);
-    $('#loss-label').html("Desired Weight Loss Rate (lb/week)");
-    $('#weightLossSlider').attr('min',0.5);
-    $('#weightLossSlider').attr('max',3);
-    $('#weightLossSlider').val(0.5);
+    if ($('#units-select').val() == 'imperial') {
+      var feet = Math.floor($('#heightSlider').val()/12);
+      var inches = $('#heightSlider').val() % 12;
+      $('#height-input').val(feet + "'" + inches + '"');
+    }
+
   })
 
 
@@ -258,6 +282,5 @@ $(document).ready(function(){
     $('#calorie-result').html(calculateCalories() - calculateDeficit());
     $('#daily-result').html(calculateCalories());
   });
-
 
 })

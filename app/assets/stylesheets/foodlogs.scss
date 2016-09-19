@@ -2,10 +2,59 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#calorie-bar {
-  transition: width 3s;
+
+// Styling for meal plan area
+#plan-area {
+  border: thick solid black;
+  width: 85%;
+  margin-top: 50px;
+  margin-bottom: 120px;
+  background-color: white;
+  min-height: 600px;
 }
 
-.progress-bar {
-  transition: width 3s;
+.meal-plan-image {
+  width: 90%;
+  margin-bottom: 25px;
+}
+
+ul.recipe-ingredients {
+  text-align: left;
+}
+
+ol.recipe-directions {
+  text-align: left;
+}
+#calorie-bar {
+  transition: width 2s;
+}
+
+
+.meal-button {
+  border: 1px solid black;
+  border-radius: 30px;
+  font-size: 20px;
+  margin: 15px;
+  padding: 8px;
+  box-shadow: 0px 0px 3px black;
+  text-shadow: 1px 1px 3px white;
+  &:hover {
+    -webkit-transform: scale(1.05);
+    box-shadow: 1px 1px 3px black;
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.remove-meal-button {
+  background-color: red;
+  &:hover {
+    background-color: red;
+  }
+}
+.edit-meal-button {
+  background-color: #18E8DD;
+  &:hover {
+    background-color: #18E8DD;
+  }
 }

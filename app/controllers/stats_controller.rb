@@ -10,7 +10,7 @@ class StatsController < ApplicationController
       if @stat.save
         redirect_to new_stat_path, notice: "Stats saved!"
       else
-        render :new
+        redirect_to new_stat_path, alert: "Missing entry in required fields"
       end
   end
 

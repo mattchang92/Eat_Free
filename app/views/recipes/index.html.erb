@@ -4,18 +4,14 @@
   <div id="photo-container" class="scrolling">
     <div class="photobanner">
       <% @recipes.each do |recipe| %>
-        <!-- <a href="#" class="recipe-link" >
-          <span class="recipe-title" ><%= recipe.name %></span>
-          <img draggable="true" ondragstart="drag(event)" src=<%= recipe.photo %> class="recipe-photo" id="<%= recipe.id %>">
-        </a> -->
-        <%= link_to image_tag(recipe.photo, class: "recipe-photo"), recipe_path(recipe), remote: true, class: "recipe-link" %>
+        <%= link_to image_tag(recipe.photo, class: "recipe-photo"), recipe_path(recipe), remote: true, class: "recipe-link", id: recipe.id %>
       <% end %>
-
-      <!--
-    <a href="#"><img id="1" draggable="true" ondragstart="drag(event)" class="first" src="http://www.fillmurray.com/350/233"></a>
- -->
   </div>
 
+  <div class="alert">
+    <h3><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    Adding this recipe will exceed your daily allowance by <span id='excess-calories'>0</span> calories. Please choose something else.</h3>
+  </div>
 
   </div>
   <div id="plan-area" class="row" >

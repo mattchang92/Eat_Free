@@ -5,7 +5,7 @@ class ProjectController < ApplicationController
   def home
   end
 
-  def test
+  def about
   end
 
 

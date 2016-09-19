@@ -52,42 +52,59 @@ input:-webkit-autofill {
   height: 75px;
   margin: auto;
   margin-top: 40px;
+  position: relative;
 }
 
 .units {
   line-height: 50px;
   border: thin solid black;
   box-shadow: 1px 1px 5px 0 black;
+  background-color: rgb(4, 155, 255);
+  color: white;
+  opacity: 1;
+  padding: 0;
+}
+
+#units-btn {
+  position: absolute;
+  border: thin solid black;
+  box-shadow: 1px 1px 5px 0 black;
+  width: 100px;
+  height: 52px;
+  top: 0;
+  z-index: 3;
   background-color: white;
-  opacity: 0.4;
+  opacity: 1;
+}
+
+.units-btn {
+  left: 108px;
+  border-radius: 10px;
+}
+
+.units-btn-moved {
+  left: 42px;
 }
 
 #metric {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   &:hover {
-    opacity: 0.8;
-    -webkit-transform: scale(1.03);
     z-index: 2;
   }
 }
 
 #imperial {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   &:hover {
-    opacity: 0.8;
-    -webkit-transform: scale(1.03);
     z-index: 2;
   }
 }
 
-.units-selected {
-  color: red;
-  opacity: 1 !important;
-  -webkit-transform: scale(1.03);
+#units-btn {
+  transition: left 0.5s, border-radius 0.5s;
 }
-
 
 // Customizing slider
 input[type=range] {
@@ -186,9 +203,9 @@ input.slide {
 
 .stats-text-field {
   height: 50px;
-  // margin-left: 40px;
-  // margin-right: 10px;
   width: 80px;
+  margin-top: -10px;
+  // margin-left: 25px;
   text-align: center;
   font-size: 25px;
 }

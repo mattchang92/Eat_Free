@@ -2,18 +2,19 @@
   <div id="stats-form-container">
     <div class="flash-message">
       <h3 style="padding-top: 20px; color: red"> <%= flash[:alert]%></h3>
-      <h3 style="padding-top: 20px; color: green"> <%= flash[:notice]%></h3> 
+      <h3 style="padding-top: 20px; color: green"> <%= flash[:notice]%></h3>
     </div>
-    <h1 style="padding-top: 50px">Enter Your Stats To Calculate Your Daily Calorie Requirements</h1>
+    <h1>Enter Your Stats To Calculate Your Daily Calorie Requirements</h1>
     <%= form_for @stat do |f| %>
     <input type="text" name="units" value="metric" style="display: none" id=
     "units-select">
     <div id="units-selection-box" class="row">
-      <div class="col-xs-6 units-selected units" id="metric">
-        Metric
+      <div class="units units-btn" id='units-btn'></div>
+      <div class="col-xs-4 col-xs-offset-2 units-selected units" id="metric">
+        <span style="margin-right: 10px">Metric</span>
       </div>
-      <div class="col-xs-6 units" id="imperial">
-        Imperial
+      <div class="col-xs-4 units" id="imperial">
+        <span style="margin-left: 15px">Imperial</span>
       </div>
 
     </div>

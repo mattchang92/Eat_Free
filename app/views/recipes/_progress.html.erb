@@ -21,7 +21,7 @@
     <div>
       <h5>Proteins:
         <span id="proteins-display">
-          <% if @total = 1 %>
+          <% if @total == 1 %>
             0.0%
           <% else %>
             <%= ((@total - @fats - @carbs) / @total * 100).round(1) %>%

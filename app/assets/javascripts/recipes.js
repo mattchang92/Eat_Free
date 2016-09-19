@@ -9,6 +9,7 @@ $(document).ready(function(){
     $('.scrolling').scrollLeft($('.scrolling').scrollLeft()+1);
   },30);
 
+
   $('#photo-container').on('mouseenter',function(){
     $(this).removeClass('scrolling');
   })
@@ -24,15 +25,23 @@ $(document).ready(function(){
   setInterval(function() {
 
     $(window).scroll(function(){
-      if ($(this).scrollTop() > $(this).height() * 0.025 ){
+      if ($(this).scrollTop() > 50 ){
         $('.daily-progress').css('top',$(window).height() - $('.daily-progress').height());
       } else {
         $('.daily-progress').css('top',$(window).height());
       }
     })
 
+    // if (parseInt($('#photo-container').scrollLeft()) > 2800) {
+    //   $('#photo-container').scrollLeft("0px");
+    // }
+
+
   }, 250);
 
-
+  $('.box').hover(function(){
+    var widthDiff = 0.5 * (parseInt($('.box').css('width'))-parseInt($('#tooltiptext1').css('width')));
+    $('.tooltiptext').css('left', widthDiff + "px");
+  })
 
 })
