@@ -3,6 +3,7 @@ $(document).ready(function(){
   clearInterval(recipeScroll);
 
   $('.daily-progress').css('top',$(window).height());
+  $('.daily-progress').css('width',$(window).width());
   // Autoscrolls the recipe banner
 
   var recipeScroll = setInterval(function(){

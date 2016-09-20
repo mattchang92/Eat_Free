@@ -4,6 +4,8 @@
       <h3 style="padding-top: 20px; color: red"> <%= flash[:alert]%></h3>
       <h3 style="padding-top: 20px; color: green"> <%= flash[:notice]%></h3>
     </div>
+    <h1><%= @stat.errors.full_messages.join(", ") %></h1>  
+
     <h1>Enter Your Stats To Calculate Your Daily Calorie Requirements</h1>
     <%= form_for @stat do |f| %>
     <input type="text" name="units" value="metric" style="display: none" id=

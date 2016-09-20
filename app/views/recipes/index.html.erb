@@ -1,19 +1,19 @@
 <div>
-   <h1 style="color: white">Add a recipe!</h1>
-  <!-- Each image is 350px by 233px -->
+
+  <h1 style="color: white">Add a recipe!</h1>
   <div id="photo-container" class="scrolling">
     <div class="photobanner">
       <% @recipes.each do |recipe| %>
         <%= link_to image_tag(recipe.photo, class: "recipe-photo"), recipe_path(recipe), remote: true, class: "recipe-link", id: recipe.id %>
       <% end %>
+    </div>
+
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      Adding this recipe will exceed your daily allowance by <span id='excess-calories'></span> calories. Please choose something else.
+    </div>
   </div>
 
-  <div class="alert">
-    <h3><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    Adding this recipe will exceed your daily allowance by <span id='excess-calories'>0</span> calories. Please choose something else.</h3>
-  </div>
-
-  </div>
   <div id="plan-area" class="row" >
     <h1>Today's Meals</h1>
     <div id="meals">
@@ -27,11 +27,9 @@
 
 </div>
 
-
 <div id="showFoodLogModal">
   <%= render "show_modal" %>
 </div>
-
 
 <div class="daily-progress">
   <%= render 'progress' %>

@@ -1,6 +1,7 @@
 class Stat < ApplicationRecord
   belongs_to :user
 
+  validates :age, presence: true
   validates :sex, presence: true
   validates :weight, presence: true
   validates :height, presence: true

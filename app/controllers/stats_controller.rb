@@ -15,7 +15,7 @@ class StatsController < ApplicationController
   end
 
   def stat_params
-    params.require(:stat).permit([:age, :sex, :weight, :activity_level, :calories, :weight_loss_rate])
+    params.require(:stat).permit([:age, :sex, :weight, :height, :activity_level, :calories, :weight_loss_rate])
   end
 
 end

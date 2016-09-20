@@ -111,27 +111,67 @@ li.pull-right {
 }
 
 
-i.fa {
-  font-size: 30px;
-}
-
 .home-footer {
-  position: absolute;
-  background-color: black;
+  // position: absolute;
+  background-color: #374550;
   color: white;
-  height: 200px;
+  height: 35vmin;
   width: 100%;
   line-height: 20%;
   text-align: center;
-  h3 {
-    font-family: "Muli", sans-serif;
-  }
+
 }
 
-div.home-footer a {
+
+.facebook {
+  background-image: url('facebook.png');
+}
+
+.twitter {
+  background-image: url('twitter.png');
+}
+
+.linkedin {
+  background-image: url('linkedin.png');
+}
+
+.google-plus {
+  background-image: url('google-plus.png');
+}
+
+.icon {
+  width: 6vmin;
+  height: 6vmin;
+  background-size: cover;
+  border-radius: 25%;
+  position: absolute;
+  left: 3vmin;
+  top: 3vmin;
+}
+
+.icon-border {
+  width: 12vmin;
+  height: 12vmin;
+  background-color: #252F36;
+  border-radius: 25%;
+  position: relative;
+  margin: auto;
+}
+
+#footer-end {
+  height: 15vmin;
+  background-color: black;
+  opacity: 0.8;
+  width: 100%;
+  line-height: 15vmin;
+  text-align: center;
+}
+
+.footer-link {
+  margin: 10px;
   color: white;
-  i {
-    margin: 30px;
+  &:visited {
+    color: white;
   }
 }
 
