@@ -18,6 +18,12 @@
             </div>
               <%= submit_tag "Log In", class: "btn btn-primary log-in-button" %>
             <% end %>
+            <div style="text-align: center">
+              <h5 style="margin: 0">or</h5>
+            </div>
+            <a href="/auth/fitbit" class="fitbit-button btn ">Log in with Fitbit
+              <%= image_tag('fitbit.png', class: 'fitbit-logo')%>
+            </a>
             <a href="#">Forgot Password?</a>
             <h5>Don't have an account?<a class="close" data-dismiss="modal" data-toggle="modal" data-target="#SignUpModal" id="link-to-sign-up">Sign Up</a></h5>
 

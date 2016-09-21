@@ -8,7 +8,7 @@
         <h4 class="modal-title" id="myModalLabel">Sign up to set up your profile</h4>
         <h6>Please enter your information below</h6>
       </div>
-      <div class="modal-body sign-in-body">
+      <div class="modal-body sign-in-body" style="text-align: center">
 
         <% @user = User.new %>
         <%= @user.errors.full_messages.join(", ") %>
@@ -20,6 +20,11 @@
           <%= f.password_field :password, placeholder: "Password...", class: "sign-up-input" %>
           <%= f.password_field :password_confirmation, placeholder: "Confirm Password...", class: "sign-up-input" %>
         <%= f.submit "Sign Up", class: "btn btn-primary log-in-button" %>
+          <h5 style="margin: 0">or</h5>
+          <a href="/auth/fitbit" class="fitbit-button btn ">Sign up with Fitbit
+            <%= image_tag('fitbit.png', class: 'fitbit-logo')%>
+          </a>
+
         <% end %>
       </div>
     </div>

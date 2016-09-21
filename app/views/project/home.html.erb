@@ -41,6 +41,7 @@
               <ul class="dropdown-menu">
                 <% if user_signed_in? %>
                 <li><%= link_to "My Profile", new_stat_path %></li>
+                <li><%= link_to "Fitbit Authorization", auth_fitbit_path %></li>
                 <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
                 <% else %>
                 <li class="">
@@ -80,36 +81,40 @@
   <div class="container" style="width: 60%">
     <div class="row" >
       <div class="col-xs-3">
-        <div class="icon-border">
-          <div class="icon twitter">
-            <a href="#" class=""></a>
+          <div class="icon-border">
+            <a href="#" class="icon-link">
+              <div class="icon twitter">
+              </div>
+            </a>
           </div>
-        </div>
         <h6>FOLLOW ON TWITTER</h6>
       </div>
       <div class="col-xs-3">
         <div class="icon-border">
-          <div class="icon facebook">
-            <a href="#" class=""></a>
-          </div>
+          <a href="#" class="icon-link">
+            <div class="icon facebook">
+            </div>
+          </a>
         </div>
         <h6>LIKE ON FACEBOOK</h6>
       </div>
       <div class="col-xs-3">
         <div class="icon-border">
-          <div class="icon linkedin">
-            <a href="#" class=""></a>
-          </div>
+          <a href="#" class="icon-link">
+            <div class="icon linkedin">
+            </div>
+          </a>
         </div>
         <h6>CONNECT ON LINKEDIN</h6>
 
       </div>
       <div class="col-xs-3">
-        <div class="icon-border">
-          <div class="icon google-plus">
-            <a href="#" class=""></a>
+          <div class="icon-border">
+            <a href="#" class="icon-link">
+              <div class="icon google-plus">
+              </div>
+            </a>
           </div>
-        </div>
         <h6>CONNECT ON GOOGLE+</h6>
       </div>
 
@@ -121,7 +126,7 @@
   <a href="#" class="footer-link">Help</a>
   <a href="#" class="footer-link">Ask Questions</a>
   <a href="#" class="footer-link">Contact Us</a>
-  <a href="#" class="footer-link">About</a>
+  <a href="#" class="footer-link">Blog</a>
 </div>
 
 

@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan'
 gem 'hirb'
+gem 'omniauth-fitbit'
+gem 'fitgem'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -18,7 +18,7 @@ input:-webkit-autofill {
     div {
       input.log-in-input {
         width: 100%;
-        margin: 10px 0px 10px 0px;
+        margin: 10px 0px 5px 0px;
         padding: 4px;
       }
 
@@ -44,6 +44,34 @@ input:-webkit-autofill {
     a#link-to-sign-up:hover {
       text-decoration: underline;
     }
+  }
+}
+
+.modal-dialog {
+  height: 400px;
+}
+
+.modal-content {
+  width: 55%;
+  height: 80%;
+  margin: auto;
+}
+
+.fitbit-logo{
+  width: 40px;
+  border-radius: 10px;
+  background-image: url('fitbit.png')
+}
+
+.fitbit-button {
+  padding: 0 12px;
+  color: white;
+  width: 100%;
+  margin: 5px 0px 10px 0px;
+  background-color: #00B0B9;
+  &:visited {
+    color: white;
+    background-color: #00B0B9;
   }
 }
 

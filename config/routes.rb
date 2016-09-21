@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   end
   resources :foodlogs, only: [:destroy, :edit]
 
+  get '/auth/fitbit', as: :auth_fitbit
+  post '/auth/fitbit' => 'callbacks#make_request'
+  get '/auth/fitbit/callback' => 'callbacks#get_response'
+
 end
