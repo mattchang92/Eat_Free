@@ -1,7 +1,5 @@
 class FoodlogsController < ApplicationController
 
-
-
   def create
     @foodlog = Foodlog.new params.permit(:servings, :recipe_id)
     @foodlog.user = current_user
@@ -41,6 +39,10 @@ class FoodlogsController < ApplicationController
     @fats = fats_calories
     @proteins = proteins_calories
     @total = 1 + @carbs + @fats + @proteins
+    gon.fats = @fats
+    gon.carbs = @carbs
+    gon.proteins = @proteins
+
   end
 
 end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "/" => "project#home", as: :root
   get "/about" => "project#about", as: :about
 
-  resources :stats, only: [:new,:create]
+  resources :stats, only: [:new, :index, :create]
   resources :users, only: [:new,:create]
   # resources :recipes
   resources :sessions, only: [:new,:create] do
@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   get '/auth/fitbit', as: :auth_fitbit
   post '/auth/fitbit' => 'callbacks#make_request'
   get '/auth/fitbit/callback' => 'callbacks#get_response'
+  get '/weight' => 'callbacks#get_weight', as: :weight
+  get '/add_weight' => 'callbacks#post_weight'
 
 end

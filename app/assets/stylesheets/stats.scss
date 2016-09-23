@@ -1,3 +1,18 @@
-// Place all the styles related to the stats controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// Styling the graph
+.graph-wrapper {
+  margin: auto;
+  width: 80%;
+  background-color: white;
+}
+
+#graph-container {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  opacity: 0.95;
+  border: thin solid black;
+}
+
+#macros_chart {
+  margin: 10px 0;
+}

@@ -6,42 +6,49 @@ class CallbacksController < ApplicationController
   def make_request
   end
 
+
+
+
   def get_response
-    # user = User.from_omniauth(env["omniauth.auth"])
-    # session[:user_id] = user.id
-
-    oauth_token = params[:oauth_token]
-    oauth_verifier = params[:oauth_verifier]
     fitbit_data  = request.env['omniauth.auth']
-
-    # activities = get_user_activities(fitbit_data)
-    render json:fitbit_data
+    user = User.find_or_create_from_fitbit(fitbit_data)
+    session[:user_id] = user.id
+    user.token_refresh(fitbit_data, user)
+    if fitbit_data["credentials"]["expires"] === true
+      HTTParty.post("https://api.fitbit.com/oauth2/token", :body => "grant_type=refresh_token&refresh_token=#{current_user.fitbit_refresh_token}" , :headers => {'Authorization' => "Basic #{ENV['FITBIT_CLIENT_KEY']}#{ENV['FITBIT_CLIENT_SECRET']}"})
+    end
+    # render json: fitbit_data
+    redirect_to root_path
   end
 
 
-  private
-    def get_user_activities(fitbit_data)
-      fitbit_user_id = fitbit_data["uid"]
-      user_secret = fitbit_data["credentials"]["secret"]
-      user_token = fitbit_data["credentials"]["token"]
+  def get_weight
+    date = (Date.today) - 30
+    # response = HTTParty.get("https://api.fitbit.com/1/user/-/body/weight/date/#{date}/today.json", :headers => {'Authorization' => "Bearer #{current_user.fitbit_access_token}"})
+    response = HTTParty.get("https://api.fitbit.com/1/user/-/activities/steps/date/#{date}/today.json", :headers => {'Authorization' => "Bearer #{current_user.fitbit_access_token}"})
+    render json: response
+  end
 
-      # Store this information in you user model for
+  def post_weight
 
-      # logins in the future.
-
-      client = Fitgem::Client.new({
-        consumer_key: ENV['FITBIT_CLIENT_KEY'],
-        consumer_secret: ENV['FITBIT_CLIENT_SECRET'],
-        token: user_token,
-        secret: user_secret,
-        user_id: fitbit_user_id,
-      })
-
-      # Reconnects existing user using the information above
-      access_token = client.reconnect(user_token, user_secret)
-      # client.activities_on_date('2015-03-25') <- Specific Date
-      client.activities_on_date('today')
+    # Seeding weight data
+    weight = 60.0
+    for i in 0..30
+      if i % 7 == 0
+        weight += 1
+      end
+      today_weight = weight + (rand(100)/100.0)
+      date = (Date.today) - i
+      HTTParty.post("https://api.fitbit.com/1/user/-/body/log/weight.json", :body => "my body content", :query => { weight: today_weight, date: date } ,:headers => { 'Authorization' => "Bearer #{current_user.fitbit_access_token}"})
     end
+    redirect_to stats_path
+
+  end
+
+  private
+
+
+
 
 
 end

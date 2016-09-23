@@ -83,6 +83,23 @@
   transition: top 1.5s;
 }
 
+.macro-label {
+  height: 15px;
+  width: 15px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0 10px;
+}
+#fats-color {
+  background-color: #f1c40f;
+}
+#carbs-color {
+  background-color: #3498db;
+}
+#proteins-color {
+  background-color: #e74c3c;
+}
+
 .progress-bar {
   max-width: 100%;
 }
@@ -188,4 +205,9 @@
 
 .closebtn:hover {
   color: black;
+}
+
+
+#macros_chart{
+  height: 100%;
 }

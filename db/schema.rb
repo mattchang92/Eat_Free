@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914040221) do
+ActiveRecord::Schema.define(version: 20160922054217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160914040221) do
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "units"
     t.index ["user_id"], name: "index_stats_on_user_id", using: :btree
   end
 
@@ -59,9 +60,15 @@ ActiveRecord::Schema.define(version: 20160914040221) do
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "fitbit_access_token"
+    t.string   "fitbit_refresh_token"
+    t.string   "fitbit_raw_data"
     t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", using: :btree
   end
 
   add_foreign_key "foodlogs", "recipes"

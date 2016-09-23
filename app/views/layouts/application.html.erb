@@ -6,6 +6,9 @@
 
     <%= stylesheet_link_tag   'application', media: 'all'%>
     <%= javascript_include_tag 'application'%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+    <%= Gon::Base.render_data %>
+
   </head>
 
   <body>
@@ -32,7 +35,8 @@
                 </a>
                 <ul class="dropdown-menu navbar-dropdown">
                   <% if user_signed_in? %>
-                  <li><%= link_to "My Profile", new_stat_path %></li>
+                  <li><%= link_to "My Stats", new_stat_path %></li>
+                  <li><%= link_to "View Progress", stats_path %></li>
                   <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
                   <% else %>
                   <li class="">

@@ -4,12 +4,13 @@
       <h3 style="padding-top: 20px; color: red"> <%= flash[:alert]%></h3>
       <h3 style="padding-top: 20px; color: green"> <%= flash[:notice]%></h3>
     </div>
-    <h1><%= @stat.errors.full_messages.join(", ") %></h1>  
+    <h1><%= @stat.errors.full_messages.join(", ") %></h1>
 
     <h1>Enter Your Stats To Calculate Your Daily Calorie Requirements</h1>
     <%= form_for @stat do |f| %>
-    <input type="text" name="units" value="metric" style="display: none" id=
-    "units-select">
+    <%= f.text_field :units, value: "metric", id: "units-select", style: "display: none" %>
+    <!-- <input type="text" name="units" value="metric" style="display: none" id=
+    "units-select"> -->
     <div id="units-selection-box" class="row">
       <div class="units units-btn" id='units-btn'></div>
       <div class="col-xs-4 col-xs-offset-2 units-selected units" id="metric">
