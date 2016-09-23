@@ -1,0 +1,37 @@
+<div>
+  <h1 style="color: white">View Foodlog History</h1>
+
+
+  <div id="plan-area" class="row" >
+    <h1><%= @date %></h1>
+    <%= form_tag show_foodlog_path, method: 'get' do %>
+      <%= select_date Date.today, prefix: :start_date %>
+      <%= submit_tag "Update" %>
+    <% end %>
+
+    <% if @calories > 0 %>
+      <h1>You ate <%= @calories %> calories on this day.</h1>
+    <% end %>
+    <div id="foodlogs-history">
+      <% if @foodlog.length > 1 %>
+        <% @foodlog.each do |meal| %>
+          <hr>
+          <div class="row" style="width: 80%">
+            <div class="col-md-8">
+              <h1><%= meal.recipe.name %></h1>
+              <h3><%= pluralize meal.servings, "serving" %>. <%= meal.servings * meal.recipe.calories %> calories.</h3>
+            </div>
+            <div class="col-md-4">
+              <div class="">
+                <img src="<%= meal.recipe.photo %>" alt="" class="foodlog-image" />
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <h1 style="margin-top: 50px;">No meals logged for this day</h1>
+      <% end %>
+    </div>
+  </div>
+
+</div>

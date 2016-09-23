@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :foodlogs, only: [:create]
   end
   resources :foodlogs, only: [:destroy, :edit]
+  get "/view_foodlogs" => 'foodlogs#show', as: :show_foodlog
 
   get '/auth/fitbit', as: :auth_fitbit
   post '/auth/fitbit' => 'callbacks#make_request'

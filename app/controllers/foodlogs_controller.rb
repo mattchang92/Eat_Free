@@ -28,9 +28,29 @@ class FoodlogsController < ApplicationController
     end
   end
 
+  def show
+    if params[:start_date] != nil
+      @date = Date.parse(params[:start_date][:month] + " " + params[:start_date][:day] + " " + params[:start_date][:year])
+      @foodlog = current_user.foodlogs.where(created_at: @date.midnight..@date.end_of_day)
+    else
+      @foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+    end
+    @calories = calories
+  end
+
+
   def edit
   end
 
+  private
+
+  def calories
+    total = 0
+    @foodlog.each do |meal|
+      total += (meal.servings * meal.recipe.calories)
+    end
+    return total
+  end
 
   def get_stats
     @calorie_limit = current_user.stats.last.calories
@@ -42,7 +62,6 @@ class FoodlogsController < ApplicationController
     gon.fats = @fats
     gon.carbs = @carbs
     gon.proteins = @proteins
-
   end
 
 end

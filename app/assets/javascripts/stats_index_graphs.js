@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  if ($('#stats_charts').attr('id') === 'stats_charts') {
+
   var weight_data = gon.weight_data;
   var steps_data = gon.steps_data;
   var loss_rate = gon.loss_rate;
@@ -7,12 +9,11 @@ $(document).ready(function(){
   var theoretical_weight = function(weight_data){
     var output = [parseInt(weight_data[0]["value"])];
     for (var i=1; i<weight_data.length; i++){
-      output.push(output[output.length-1] - (loss_rate / 7));
+      output.push(Math.round( 100 * (output[output.length-1] - loss_rate/7 ))/100);
     }
     return output
   }
 
-  if (weight_data) {
 
     var weightArr = [];
     var dateArr = [];
@@ -62,14 +63,6 @@ $(document).ready(function(){
                 fontSize: 30,
                 labelString: 'Weight'
               }
-            }],
-            xAxes: [{
-              scaleLabel: {
-                display: true,
-                fontSize: 30,
-
-                labelString: 'Date'
-              }
             }]
           }
         }
@@ -100,14 +93,6 @@ $(document).ready(function(){
                 display: true,
                 fontSize: 30,
                 labelString: 'Steps'
-              }
-            }],
-            xAxes: [{
-              scaleLabel: {
-                display: true,
-                fontSize: 30,
-
-                labelString: 'Date'
               }
             }]
           }
