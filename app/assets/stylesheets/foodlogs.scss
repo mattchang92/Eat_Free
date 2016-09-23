@@ -11,6 +11,7 @@
   margin-bottom: 120px;
   background-color: white;
   min-height: 600px;
+  opacity: 0.95;
 }
 
 .meal-plan-image {
@@ -20,13 +21,20 @@
 
 ul.recipe-ingredients {
   text-align: left;
+  margin: auto 0;
+  padding-left: 50px;
 }
 
 ol.recipe-directions {
   text-align: left;
+  margin: auto 0;
 }
 #calorie-bar {
   transition: width 2s;
+}
+
+.recipe-wrapper {
+  padding: 0;
 }
 
 
