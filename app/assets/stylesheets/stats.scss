@@ -1,13 +1,13 @@
 // Styling the graph
 .graph-wrapper {
   margin: auto;
-  width: 80%;
+  width: 95%;
   background-color: white;
 }
 
 #graph-container {
   background-color: white;
-  width: 80%;
+  width: 90%;
   margin: auto;
   opacity: 0.95;
   border: thin solid black;
@@ -15,4 +15,16 @@
 
 #macros_chart {
   margin: 10px 0;
+}
+
+#stats-page-title {
+  margin: 40px auto;
+}
+
+.data-row div {
+  padding: 5px;
+}
+
+.stats-body {
+  margin-top: 25px;
 }

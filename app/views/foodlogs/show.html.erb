@@ -3,17 +3,22 @@
 
 
   <div id="plan-area" class="row" >
-    <h1><%= @date %></h1>
+    <h1>Select a date</h1>
     <%= form_tag show_foodlog_path, method: 'get' do %>
-      <%= select_date Date.today, prefix: :start_date %>
-      <%= submit_tag "Update" %>
+      <%# select_date Date.today, prefix: :start_date %>
+      <div id="date-entry">
+        <input type="date" name="date" value="<%= params[:date] %>" id="foodlog-date">
+      </div>
+      <%= submit_tag "Update", class: "btn btn-success", id: "date-update" %>
     <% end %>
 
     <% if @calories > 0 %>
-      <h1>You ate <%= @calories %> calories on this day.</h1>
+      <h1>You ate <%= @calories %> calories on <%= @date %>.</h1>
+    <% else %>
+      <h1><%= @date %></h1>
     <% end %>
     <div id="foodlogs-history">
-      <% if @foodlog.length > 1 %>
+      <% if @foodlog.length > 0 %>
         <% @foodlog.each do |meal| %>
           <hr>
           <div class="row" style="width: 80%">

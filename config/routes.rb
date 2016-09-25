@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get "/view_foodlogs" => 'foodlogs#show', as: :show_foodlog
 
   get '/auth/fitbit', as: :auth_fitbit
-  post '/auth/fitbit' => 'callbacks#make_request'
+  post '/auth/fitbit' => 'callbacks#make_request', as: :fitbit_auth
   get '/auth/fitbit/callback' => 'callbacks#get_response'
   get '/weight' => 'callbacks#get_weight', as: :weight
   get '/add_weight' => 'callbacks#post_weight'

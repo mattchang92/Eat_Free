@@ -7,8 +7,6 @@ class CallbacksController < ApplicationController
   end
 
 
-
-
   def get_response
     fitbit_data  = request.env['omniauth.auth']
     user = User.find_or_create_from_fitbit(fitbit_data)
@@ -25,7 +23,7 @@ class CallbacksController < ApplicationController
   def get_weight
     date = (Date.today) - 30
     # response = HTTParty.get("https://api.fitbit.com/1/user/-/body/weight/date/#{date}/today.json", :headers => {'Authorization' => "Bearer #{current_user.fitbit_access_token}"})
-    response = HTTParty.get("https://api.fitbit.com/1/user/-/activities/steps/date/#{date}/today.json", :headers => {'Authorization' => "Bearer #{current_user.fitbit_access_token}"})
+    response = HTTParty.get("https://api.fitbit.com/1/user/-/activities/heart/date/#{date}/today.json", :headers => {'Authorization' => "Bearer #{current_user.fitbit_access_token}"})
     render json: response
   end
 

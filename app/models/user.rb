@@ -41,6 +41,10 @@ class User < ApplicationRecord
     uid.present? && provider.present?
   end
 
+  def from_fitbit?
+    uid.present? && provider == "fitbit"
+  end
+
   def self.find_or_create_from_fitbit(fitbit_data)
     find_by_fitbit(fitbit_data) || create_from_fitbit(fitbit_data)
   end

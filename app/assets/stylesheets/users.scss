@@ -212,9 +212,10 @@ input.slide {
 
 #stats-form-container {
   background-color: #DDE1E5;
-  width: 80%;
-  margin: auto;
-  opacity: 0.9;
+  width: 85%;
+  border: thin solid black;
+  margin: 20px auto;
+  opacity: 0.95;
   form {
     div.category {
       input#sex-input {

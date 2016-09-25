@@ -29,10 +29,11 @@ class FoodlogsController < ApplicationController
   end
 
   def show
-    if params[:start_date] != nil
-      @date = Date.parse(params[:start_date][:month] + " " + params[:start_date][:day] + " " + params[:start_date][:year])
+    if params[:date] != nil
+      @date = Date.parse(params[:date])
       @foodlog = current_user.foodlogs.where(created_at: @date.midnight..@date.end_of_day)
     else
+      @date = Date.today
       @foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
     end
     @calories = calories

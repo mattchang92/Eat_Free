@@ -5,10 +5,10 @@
 
 // Styling for meal plan area
 #plan-area {
-  border: thick solid black;
+  border: thin solid black;
   width: 85%;
   margin-top: 50px;
-  margin-bottom: 120px;
+  margin-bottom: 130px;
   background-color: white;
   min-height: 600px;
   opacity: 0.95;
@@ -78,4 +78,53 @@ ol.recipe-directions {
 .foodlog-image {
   width: 90%;
   // float: left;
+}
+
+#foodlogs-history {
+  padding: 25px;
+}
+
+#date-entry {
+  width: 200px;
+  margin: 0 auto;
+  display: inline-block;
+}
+input[type=date]#foodlog-date {
+  height: 35px;
+  margin: 0 auto;
+  width: 100%;
+  font-family: avenir, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: lighten(#2f2f2f,40%);
+  outline: none;
+  border: 0;
+  border-radius: 3px;
+  padding: 0 3px;
+  color: black;
+  background-color: lighten(#2f2f2f,40%);
+  color: darken(#fff, 10%);
+  cursor: pointer;
+
+  &::-webkit-clear-button {
+    font-size: 18px;
+    height: 30px;
+    position: relative;
+    right: 5px;
+    margin-right: 4px;
+  }
+  &::-webkit-calendar-picker-indicator {
+    font-size: 18px;
+    color: black;
+
+    &:active {
+      color: blue;
+    }
+  }
+}
+
+#date-update {
+  height: 35px;
+  border: 0;
 }

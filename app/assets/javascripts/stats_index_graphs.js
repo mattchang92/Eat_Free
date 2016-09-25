@@ -4,6 +4,8 @@ $(document).ready(function(){
 
   var weight_data = gon.weight_data;
   var steps_data = gon.steps_data;
+  var distance_data = gon.distance_data;
+  var heart_data = gon.heart_data;
   var loss_rate = gon.loss_rate;
 
   var theoretical_weight = function(weight_data){
@@ -13,11 +15,15 @@ $(document).ready(function(){
     }
     return output
   }
-
+    // var fakeData = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
+    // var fakeDate = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
 
     var weightArr = [];
     var dateArr = [];
     var stepsArr = [];
+    var distanceArr = [];
+    var heartArr = [];
+
     var data_array = function(source, data_type, arr){
       source.map(function(obj){
         arr.push(obj[data_type]);
@@ -26,10 +32,8 @@ $(document).ready(function(){
       return arr
     }
 
-    // var date_data = [1,1,1,1,1,1,1,1,1,1]
-    // var weight_data = [14,14,13,13,12,12,11,11,10,10]
-
     var data = {
+    	// labels : fakeDate,
     	labels : data_array(weight_data, 'dateTime',dateArr),
     	datasets : [
     		{
@@ -38,6 +42,7 @@ $(document).ready(function(){
           borderColor : "rgba(109,204,204,1)",
           spanGaps : true,
           backgroundColor: 'rgba(109,204,204,0.2)',
+    			// data : fakeData.reverse()
     			data : data_array(weight_data, 'value', weightArr)
     		},
     		{
@@ -46,6 +51,7 @@ $(document).ready(function(){
           borderColor : "rgba(220, 220, 220, 1)",
           spanGaps : true,
           backgroundColor: 'rgba(220, 220, 220, 0.2)',
+    			// data : fakeData
     			data : theoretical_weight(weight_data)
     		}
     	]
@@ -61,7 +67,7 @@ $(document).ready(function(){
               scaleLabel: {
                 display: true,
                 fontSize: 30,
-                labelString: 'Weight'
+                labelString: 'Weight (kg)'
               }
             }]
           }
@@ -69,14 +75,16 @@ $(document).ready(function(){
     });
 
     var stepsData = {
+      // labels : fakeDate,
       labels : dateArr,
       datasets : [
         {
           label : "Steps",
           cubicInterpolationMode : "monotone",
-          borderColor : "rgba(109,204,204,1)",
+          borderColor : "rgba(93,165,218,1)",
           spanGaps : true,
-          backgroundColor: 'rgba(109,204,204,0.2)',
+          backgroundColor: 'rgba(93,165,218,0.2)',
+          // data : fakeData
           data : data_array(steps_data, 'value', stepsArr)
         }
       ]
@@ -93,6 +101,80 @@ $(document).ready(function(){
                 display: true,
                 fontSize: 30,
                 labelString: 'Steps'
+              }
+            }]
+          }
+        }
+    });
+
+    var distanceData = {
+      // labels : fakeDate,
+      labels : dateArr,
+      datasets : [
+        {
+          label : "Distance Walked",
+          cubicInterpolationMode : "monotone",
+          borderColor : "rgba(96,189,104,1)",
+          spanGaps : true,
+          backgroundColor: 'rgba(96,189,104,0.2)',
+          // data : fakeData
+          data : data_array(distance_data, 'value', distanceArr)
+        }
+      ]
+    }
+
+    var distanceChart = document.getElementById('distance_chart').getContext('2d');
+    var myDistanceChart = new Chart(distanceChart , {
+        type: "line",
+        data: distanceData,
+        options: {
+          scales: {
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                fontSize: 30,
+                labelString: 'Distance(km)'
+              }
+            }]
+          }
+        }
+    });
+
+    var heart_array = function(source, data_type1, data_type2, arr){
+      source.map(function(obj){
+        arr.push(obj[data_type1][data_type2]);
+        return arr;
+      })
+      return arr
+    }
+
+    var heartData = {
+      // labels : fakeDate,
+      labels : dateArr,
+      datasets : [
+        {
+          label : "Average Resting HR",
+          cubicInterpolationMode : "monotone",
+          borderColor : "rgba(241,88,84,1)",
+          spanGaps : true,
+          backgroundColor: 'rgba(241,88,84,0.2)',
+          // data : fakeData
+          data : heart_array(heart_data, 'value', 'restingHeartRate', heartArr)
+        }
+      ]
+    }
+
+    var heartChart = document.getElementById('heart_chart').getContext('2d');
+    var myHeartChart = new Chart(heartChart , {
+        type: "line",
+        data: heartData,
+        options: {
+          scales: {
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                fontSize: 30,
+                labelString: 'Heart Rate (bpm)'
               }
             }]
           }

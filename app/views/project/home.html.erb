@@ -41,7 +41,9 @@
               <ul class="dropdown-menu">
                 <% if user_signed_in? %>
                 <li><%= link_to "My Profile", new_stat_path %></li>
-                <li><%= link_to "View Progress", stats_path %></li>
+                <% if current_user.from_fitbit? %>
+                  <li><%= link_to "Fitbit Data", stats_path %></li>
+                <% end %>
                 <li><%= link_to "View History", show_foodlog_path %></li>
                 <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
                 <% else %>

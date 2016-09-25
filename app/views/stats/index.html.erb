@@ -1,9 +1,71 @@
 <div style="height: 1000px" class="col-md-12" >
   <div id="graph-container">
-    <h1>My Progress</h1>
+    <h1 id="stats-page-title">Graphical Representation Of Your Fitbit Data</h1>
     <div class="graph-wrapper">
-      <canvas id="stats_charts"></canvas>
-      <canvas id="steps_chart"></canvas>
+      <div class="row data-row" style="margin-top: 25px">
+        <h2>Weight</h2>
+        <h4><i>Short-term fluctuations in weight don’t give you a realistic picture of your health and fitness. It’s the long term trends that matter.</i></h4>
+        <div class="col-sm-9">
+          <canvas id="stats_charts"></canvas>
+        </div>
+        <div class="col-sm-3 stats-body" >
+          <h3>Average weight loss:</h3>
+          <div style="text-align: center"><h4><i><%= ((@weight["body-weight"].first["value"].to_f - @weight["body-weight"].last["value"].to_f)/(30/7)).round(2) %> kg per week</i></h4></div>
+          <!-- <div style="text-align: center"><h4><i>2</i> kg per week</h4></div> -->
+          <h3>Desired weight loss rate:</h3>
+          <div style="text-align: center"><h4><i><%= @rate.round(2) %> kg per week</i></h4></div>
+          <h3>Weight lost this week:</h3>
+          <div style="text-align: center"><h4><i><%= (@weight["body-weight"][-8]["value"].to_f - @weight["body-weight"].last["value"].to_f).round(2) %> kg</i></h4></div>
+          <!-- <div style="text-align: center"><h4><i>2</i> kg</h4></div> -->
+        </div>
+      </div>
+      <div class="row data-row" style="margin-top: 25px">
+        <h2>Steps</h2>
+        <h4><i>The recommended 10,000 steps a day translates to about 5 miles or 30 minutes of exercise.</i></h4>
+        <div class="col-sm-3 stats-body" >
+          <h3>Average daily steps:</h3>
+          <div style="text-align: center"><h4><i><%= @daily_steps %> steps per day</i></h4></div>
+          <!-- <div style="text-align: center"><h4><i>2</i> kg per week</h4></div> -->
+          <h3>Highest daily steps:</h3>
+          <div style="text-align: center"><h4><i><%= @max_steps %> steps</i></h4></div>
+          <h3>Total steps this week:</h3>
+          <div style="text-align: center"><h4><i><%= @weekly_steps %> steps</i></h4></div>
+          <!-- <div style="text-align: center"><h4><i>2</i> kg</h4></div> -->
+        </div>
+        <div class="col-sm-9">
+          <canvas id="steps_chart"></canvas>
+        </div>
+      </div>
+      <div class="row data-row" style="margin-top: 25px">
+        <h2>Resting Heart Rate</h2>
+        <h4><i>Resting heart rate measures your heart beats when you are still, and it can be an important indicator of the health of your heart.</i></h4>
+        <div class="col-sm-9">
+          <canvas id="heart_chart"></canvas>
+        </div>
+        <div class="col-sm-3 stats-body" >
+          <h3>Average Resting HR:</h3>
+          <div style="text-align: center"><h4><i><%= @average_hr %> bpm</i></h4></div>
+          <h4><i>According to the American Heart Association website, “the average resting heart rate is 60-80 beats per minute, but it’s usually lower for physically fit people.” This is because, “active people often have lower heart rates because their heart muscle is in better condition and doesn’t need to work as hard.”</i></h4>
+          <!-- <div style="text-align: center"><h4><i>2</i> kg per week</h4></div> -->
+        </div>
+      </div>
+      <div class="row data-row" style="margin-top: 25px">
+        <h2>Distance</h2>
+        <h4><i>Regular walking improves general health and longevity. According to the US Report of the Surgeon General, not only do walkers live longer but also the quality of their lives improves dramatically.</i></h4>
+        <div class="col-sm-3 stats-body" >
+          <h3>Average distance walked:</h3>
+          <div style="text-align: center"><h4><i><%= @daily_distance %> km per day</i></h4></div>
+          <!-- <div style="text-align: center"><h4><i>2</i> kg per week</h4></div> -->
+          <h3>Highest distance:</h3>
+          <div style="text-align: center"><h4><i><%= @max_distance %> km</i></h4></div>
+          <h3>Total distance this week:</h3>
+          <div style="text-align: center"><h4><i><%= @weekly_distance %> km</i></h4></div>
+          <!-- <div style="text-align: center"><h4><i>2</i> kg</h4></div> -->
+        </div>
+        <div class="col-sm-9">
+          <canvas id="distance_chart"></canvas>
+        </div>
+      </div>
     </div>
   </div>
 
