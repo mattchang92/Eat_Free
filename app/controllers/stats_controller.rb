@@ -120,7 +120,7 @@ class StatsController < ApplicationController
         n += 1
       end
     end
-    return (total/n).to_i
+    return (n == 0 ? 0 : (total/n).to_i)
   end
 
 end
