@@ -69,6 +69,10 @@ input:-webkit-autofill {
   width: 100%;
   margin: 5px 0px 10px 0px;
   background-color: #00B0B9;
+  &:hover {
+    color: white;
+    background-color: #00B0B9;  
+  }
   &:visited {
     color: white;
     background-color: #00B0B9;
