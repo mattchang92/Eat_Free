@@ -5,7 +5,6 @@ gem 'font-awesome-rails'
 gem 'bootstrap-glyphicons'
 gem 'font-awesome-sass'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
@@ -18,7 +17,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -35,7 +33,7 @@ gem 'fitgem'
 gem 'httparty'
 gem 'chart-js-rails'
 gem 'gon'
-gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cors', require: 'rack/cors'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

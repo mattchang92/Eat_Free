@@ -1,18 +1,17 @@
 class FoodlogsController < ApplicationController
-
   def create
     @foodlog = Foodlog.new params.permit(:servings, :recipe_id)
     @foodlog.user = current_user
     get_stats
     respond_to do |format|
       if (@foodlog.servings * @foodlog.recipe.calories) > (@calorie_limit - @calories + 100)
-        format.html {redirect_to recipes_path, alert: "Calorie limit surpassed, please choose another meal"}
-        format.js {render :add_failure}
+        format.html { redirect_to recipes_path, alert: 'Calorie limit surpassed, please choose another meal' }
+        format.js { render :add_failure }
       else
         if @foodlog.save
           get_stats
-          format.html {redirect_to recipes_path}
-          format.js {render :add_success}
+          format.html { redirect_to recipes_path }
+          format.js { render :add_success }
         end
       end
     end
@@ -23,22 +22,21 @@ class FoodlogsController < ApplicationController
     foodlog.destroy
     respond_to do |format|
       get_stats
-      format.html {redirect_to recipes_path}
-      format.js {render :remove_success}
+      format.html { redirect_to recipes_path }
+      format.js { render :remove_success }
     end
   end
 
   def show
-    if params[:date] != nil
+    if !params[:date].nil?
       @date = Date.parse(params[:date])
       @foodlog = current_user.foodlogs.where(created_at: @date.midnight..@date.end_of_day)
     else
       @date = Date.today
-      @foodlog = current_user.foodlogs.where("created_at >= ?", Time.zone.now.beginning_of_day)
+      @foodlog = current_user.foodlogs.where('created_at >= ?', Time.zone.now.beginning_of_day)
     end
     @calories = calories
   end
-
 
   def edit
   end
@@ -50,7 +48,7 @@ class FoodlogsController < ApplicationController
     @foodlog.each do |meal|
       total += (meal.servings * meal.recipe.calories)
     end
-    return total
+    total
   end
 
   def get_stats
@@ -64,5 +62,4 @@ class FoodlogsController < ApplicationController
     gon.carbs = @carbs
     gon.proteins = @proteins
   end
-
 end

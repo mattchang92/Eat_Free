@@ -8,5 +8,4 @@ class Stat < ApplicationRecord
   validates :activity_level, presence: true
   validates :weight_loss_rate, presence: true
   validates :calories, presence: true
-
 end

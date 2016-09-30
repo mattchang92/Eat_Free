@@ -1,5 +1,8 @@
 <div style="height: 1000px" class="col-md-12" >
   <div id="graph-container">
+    <% if current_user.first_name == "Guest" %>
+      <h4 id="guest-warning">Guest account has fake weight data seeded to Fitbit's database. However steps, heartrate and distance data cannot be logged through API requests and are thus shown as unchanging</h4>
+    <% end %>
     <h1 id="stats-page-title">Graphical Representation Of Your Fitbit Data</h1>
     <div class="graph-wrapper">
       <div class="row data-row" style="margin-top: 25px">
