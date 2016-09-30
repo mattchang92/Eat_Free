@@ -24,5 +24,12 @@ module ProjectRoughDraft
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|
       html_tag
     }
+    
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :patch, :delete]
+      end
+    end
   end
 end
