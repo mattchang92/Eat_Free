@@ -23,5 +23,12 @@ Rails.application.routes.draw do
   get '/auth/fitbit/callback' => 'callbacks#get_response'
   get '/weight' => 'callbacks#get_weight', as: :weight
   get '/add_weight' => 'callbacks#post_weight'
-  post '/authenticate_mobile' => 'callbacks#authenticate_mobile'
+
+  namespace :api, defaults: {format: :json} do
+      namespace :v1 do
+        post '/authenticate_user' => 'users#login'
+        resources :recipes, only: [:index]
+      end
+    end
+
 end

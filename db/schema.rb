@@ -10,67 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_160_922_054_217) do
+ActiveRecord::Schema.define(version: 20161004022825) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'foodlogs', force: :cascade do |t|
-    t.integer  'servings'
-    t.integer  'recipe_id'
-    t.integer  'user_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['recipe_id'], name: 'index_foodlogs_on_recipe_id', using: :btree
-    t.index ['user_id'], name: 'index_foodlogs_on_user_id', using: :btree
+  create_table "foodlogs", force: :cascade do |t|
+    t.integer  "servings"
+    t.integer  "recipe_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_foodlogs_on_recipe_id", using: :btree
+    t.index ["user_id"], name: "index_foodlogs_on_user_id", using: :btree
   end
 
-  create_table 'recipes', force: :cascade do |t|
-    t.string   'name'
-    t.text     'ingredients'
-    t.integer  'calories'
-    t.integer  'servings'
-    t.float    'fats'
-    t.float    'carbs'
-    t.float    'proteins'
-    t.string   'tag'
-    t.string   'photo'
-    t.text     'directions'
-    t.datetime 'created_at',  null: false
-    t.datetime 'updated_at',  null: false
+  create_table "recipes", force: :cascade do |t|
+    t.string   "name"
+    t.text     "ingredients"
+    t.integer  "calories"
+    t.integer  "servings"
+    t.float    "fats"
+    t.float    "carbs"
+    t.float    "proteins"
+    t.string   "tag"
+    t.string   "photo"
+    t.text     "directions"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table 'stats', force: :cascade do |t|
-    t.integer  'age'
-    t.string   'sex'
-    t.float    'weight'
-    t.integer  'height'
-    t.float    'activity_level'
-    t.integer  'calories'
-    t.float    'weight_loss_rate'
-    t.integer  'user_id'
-    t.datetime 'created_at',       null: false
-    t.datetime 'updated_at',       null: false
-    t.string   'units'
-    t.index ['user_id'], name: 'index_stats_on_user_id', using: :btree
+  create_table "stats", force: :cascade do |t|
+    t.integer  "age"
+    t.string   "sex"
+    t.float    "weight"
+    t.integer  "height"
+    t.float    "activity_level"
+    t.integer  "calories"
+    t.float    "weight_loss_rate"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "units"
+    t.index ["user_id"], name: "index_stats_on_user_id", using: :btree
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string   'first_name'
-    t.string   'last_name'
-    t.string   'email'
-    t.string   'password_digest'
-    t.datetime 'created_at',           null: false
-    t.datetime 'updated_at',           null: false
-    t.string   'uid'
-    t.string   'provider'
-    t.string   'fitbit_access_token'
-    t.string   'fitbit_refresh_token'
-    t.string   'fitbit_raw_data'
-    t.index ['email'], name: 'index_users_on_email', using: :btree
-    t.index %w(uid provider), name: 'index_users_on_uid_and_provider', using: :btree
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "fitbit_access_token"
+    t.string   "fitbit_refresh_token"
+    t.string   "fitbit_raw_data"
+    t.string   "api_key"
+    t.index ["api_key"], name: "index_users_on_api_key", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", using: :btree
   end
 
-  add_foreign_key 'foodlogs', 'recipes'
-  add_foreign_key 'foodlogs', 'users'
-  add_foreign_key 'stats', 'users'
+  add_foreign_key "foodlogs", "recipes"
+  add_foreign_key "foodlogs", "users"
+  add_foreign_key "stats", "users"
 end

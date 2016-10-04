@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :stats, dependent: :destroy
   has_many :foodlogs, dependent: :destroy
 
-  # before_create :generate_api_key
+  before_create :generate_api_key
 
   # after_initialize :set_defaults
 
@@ -62,10 +62,10 @@ class User < ApplicationRecord
 
   private
 
-  # def generate_api_key
-  #   loop do
-  #     self.api_key = SecureRandom.hex(32)
-  #     break unless User.find_by_api_key(self.api_key)
-  #   end
-  # end
+  def generate_api_key
+    loop do
+      self.api_key = SecureRandom.hex(32)
+      break unless User.find_by_api_key(self.api_key)
+    end
+  end
 end
