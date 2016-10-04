@@ -3,20 +3,20 @@ class RecipesController < ApplicationController
 
   def index
     respond_to do |format|
-      if current_user.stats.last.present?
+      # if current_user.stats.last.present?
         @recipes = Recipe.all
-        @foodlog = current_user.foodlogs.where('created_at >= ?', Time.zone.now.beginning_of_day)
-        @calorie_limit = current_user.stats.last.calories
-        @calories = daily_calories
-        @carbs = carbs_calories
-        @fats = fats_calories
-        @proteins = proteins_calories
-        @total = 1 + @carbs + @fats + @proteins
+        # @foodlog = current_user.foodlogs.where('created_at >= ?', Time.zone.now.beginning_of_day)
+        # @calorie_limit = current_user.stats.last.calories
+        # @calories = daily_calories
+        # @carbs = carbs_calories
+        # @fats = fats_calories
+        # @proteins = proteins_calories
+        # @total = 1 + @carbs + @fats + @proteins
         format.html { render }
         format.json { render json: @recipes }
-      else
-        format.html { redirect_to new_stat_path, alert: 'You must enter your stats first to use the meal planner' }
-      end
+      # else
+        # format.html { redirect_to new_stat_path, alert: 'You must enter your stats first to use the meal planner' }
+      # end
     end
   end
 

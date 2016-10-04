@@ -21,15 +21,11 @@
 
 // control  speed
 $(document).ready(function(){
-  console.log("hi");
 
-  $('#myCarousel').height($(window).height());
-
-
-   $("#myCarousel").carousel({
-       interval : 5000,
-       pause: false
-   });
+  $("#myCarousel").carousel({
+     interval : 5000,
+     pause: false
+  });
 
 
 

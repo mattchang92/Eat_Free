@@ -5,6 +5,10 @@ class CallbacksController < ApplicationController
   def make_request
   end
 
+  def authenticate_mobile
+    p params
+  end
+
   def get_response
     fitbit_data = request.env['omniauth.auth']
     user = User.find_or_create_from_fitbit(fitbit_data)
