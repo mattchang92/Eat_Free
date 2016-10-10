@@ -25,7 +25,7 @@ body {
 
 #application-body {
   background: url("background.jpg");
-  background-size: cover;
+  background-size: auto;
   background-repeat: no-repeat;
 }
 
@@ -35,6 +35,7 @@ body {
 
 
 #myCarousel {
+  max-height: 100vh;
   overflow: hidden;
 }
 
@@ -61,8 +62,10 @@ body {
 
 
 #main-title {
-  padding-top: 40px;
-  padding-bottom: 15px;
+  position: absolute;
+  font-size: 10vmin;
+  top: 40vh;
+  left: 40vw;
   color: white;
   font-family: avenir;
 }
@@ -71,6 +74,30 @@ body {
 .section-header {
   height: 600px;
   text-align: center;
+}
+
+div.header-wrapper {
+  padding: 50px;
+}
+
+.expired-token-warning {
+  position: fixed;
+  display: none;
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 15px;
+  z-index: 20;
+}
+
+.api-limit-warning {
+  position: fixed;
+  display: none;
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 15px;
+  z-index: 20;
 }
 
 
@@ -139,8 +166,7 @@ ul.nav > li.home-link {
 }
 
 .app-navbar {
-  padding-bottom: 50px;
-  margin-bottom: 65px;
+  padding: 50px 0;
 }
 
 .icon-bar {

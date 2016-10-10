@@ -35,19 +35,27 @@ class StatsController < ApplicationController
           current_user.stats.last.units == 'metric' ? true : gon.loss_rate /= 2.2
         end
 
-        if @weight["errors"]
-          # HTTParty.post('https://api.fitbit.com/oauth2/token', body: "grant_type=refresh_token&refresh_token=#{current_user.fitbit_refresh_token}", headers: { 'Authorization' => "Basic #{ENV['FITBIT_CLIENT_KEY']}#{ENV['FITBIT_CLIENT_SECRET']}" })
-          redirect_to fitbit_auth_path
-        else
-          @average_hr = average_hr
-          @max_steps = max_steps
-          @weekly_steps = weekly_steps
-          @daily_steps = daily_steps
-          @max_distance = max_distance
-          @weekly_distance = weekly_distance
-          @daily_distance = daily_distance
-          @rate = current_user.stats.last.weight_loss_rate
-          current_user.stats.last.units == 'metric' ? true : @rate /= 2.2
+        respond_to do |format|
+
+          if @weight["errors"][0]["message"].include?('Rate limit exceeded for this user')
+            format.html { redirect_to root_path }
+            format.js { render :api_limit_reached }
+          elsif @weight["errors"]
+            format.html { redirect_to root_path }
+            format.js { render :token_expired }
+          else
+            @average_hr = average_hr
+            @max_steps = max_steps
+            @weekly_steps = weekly_steps
+            @daily_steps = daily_steps
+            @max_distance = max_distance
+            @weekly_distance = weekly_distance
+            @daily_distance = daily_distance
+            @rate = current_user.stats.last.weight_loss_rate
+            current_user.stats.last.units == 'metric' ? true : @rate /= 2.2
+            format.html { redirect_to stats_path }
+            format.js { redirect_to stats_path }
+          end
         end
       end
     end

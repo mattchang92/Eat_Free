@@ -14,58 +14,66 @@
   <body id="application-body">
 
     <div class="text container">
-      <div class="section-header section-boxed apply-gradient" style="padding-top: 50px">
+      <div class="section-header section-boxed apply-gradient">
         <nav class="navbar app-navbar">
-          <div class="header-wrapper" >
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav container">
-                <li class="home-link"><a href="/" class="link">HOME</a></li>
-                <li class="home-link"><a href="/about" class="link">ABOUT</a></li>
-                <!-- <li><a href="#" class="link">RECIPES</a></li> -->
-                <% if user_signed_in? %>
-                  <li class="home-link"><%= link_to "MEAL PLANNER", recipes_path, class: "link" %></li>
-                <% else %>
-                  <li class="home-link"><a type="button" data-toggle="modal" data-target="#LogInModal" class="link">MEAL PLANNER</a></li>
-                <% end %>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav container">
+              <li class="home-link"><a href="/" class="link">HOME</a></li>
+              <li class="home-link"><a href="/about" class="link">ABOUT</a></li>
+              <!-- <li><a href="#" class="link">RECIPES</a></li> -->
+              <% if user_signed_in? %>
+                <li class="home-link"><%= link_to "MEAL PLANNER", recipes_path, class: "link" %></li>
+              <% else %>
+                <li class="home-link"><a type="button" data-toggle="modal" data-target="#LogInModal" class="link">MEAL PLANNER</a></li>
+              <% end %>
 
-                <li class="home-link">
-                  <a href="#" class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %>
-                    <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu navbar-dropdown">
-                    <% if user_signed_in? %>
-                    <li><%= link_to "My Stats", new_stat_path %></li>
-                    <% if current_user.from_fitbit? %>
-                      <li><%= link_to "Fitbit Data", stats_path %></li>
-                    <% end %>
-                    <li><%= link_to "View History", show_foodlog_path %></li>
-                    <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
-                    <% else %>
-                    <li class="">
-                      <a type="button" data-toggle="modal" data-target="#LogInModal">
-                        Log In
-                      </a></li>
-                    <li class="">
-                      <a type="button" data-toggle="modal" data-target="#SignUpModal">
-                        Sign Up
-                      </a></li>
-                    <% end %>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          <%= yield %>
+              <li class="home-link">
+                <a href="#" class="dropdown-toggle link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <%=  user_signed_in? ? "#{current_user.full_name.upcase}" : "PROFILE" %>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu navbar-dropdown">
+                  <% if user_signed_in? %>
+                  <li><%= link_to "My Stats", new_stat_path %></li>
+                  <% if current_user.from_fitbit? %>
+                    <li><%= link_to "Fitbit Data", stats_path, remote: true %></li>
+                  <% end %>
+                  <li><%= link_to "View History", show_foodlog_path %></li>
+                  <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
+                  <% else %>
+                  <li class="">
+                    <a type="button" data-toggle="modal" data-target="#LogInModal">
+                      Log In
+                    </a></li>
+                  <li class="">
+                    <a type="button" data-toggle="modal" data-target="#SignUpModal">
+                      Sign Up
+                    </a></li>
+                  <% end %>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        <%= yield %>
       </div>
-    </div>
   </div>
+</div>
+
+<div class="expired-token-warning">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  Fitbit access token has expired. Please log in again with Fitbit to view your data. If this is the guest account, Fitbit data is currently unavailable.
+</div>
+
+<div class="api-limit-warning">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  Fitbit API request limit has been reached. Please until the start of the next hour.
 </div>
 
 <%= render :partial => "project/signIn" %>

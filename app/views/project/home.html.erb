@@ -21,8 +21,7 @@
   </div>
 
   <div class="carousel-caption text apply-gradient">
-    <div class="container">
-    <div class="section-header section-boxed" style="padding: 5px">
+    <div class="section-header section-boxed">
       <h1 id="main-title">Eat Free</h1>
       <nav class="navbar">
         <div class="header-wrapper" >
@@ -49,7 +48,7 @@
                 <% if user_signed_in? %>
                 <li><%= link_to "My Profile", new_stat_path %></li>
                 <% if current_user.from_fitbit? %>
-                  <li><%= link_to "Fitbit Data", stats_path %></li>
+                  <li><%= link_to "Fitbit Data", stats_path, remote: true %></li>
                 <% end %>
                   <li><%= link_to "View History", show_foodlog_path %></li>
                   <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
@@ -76,12 +75,13 @@
 
       </div>
     </div>
-    </div>
 
   </div>
 </div>
 
-<div id="image-wrapper">
+
+
+<!-- <div id="image-wrapper">
   <div class="col-md-6 flip-image1" style="visibility: hidden" >
     <h2 class="flip-text"><span class="flip-text-span">Supplement your training with a tailored diet</span></h2>
   </div>
@@ -89,7 +89,7 @@
   <div class="col-md-6 flip-image2" style="visibility: hidden" >
     <h2 class="flip-text"><span class="flip-text-span">Take the guess work out of weight loss</span></h2>
   </div>
-</div>
+</div> -->
 
 <div class="home-footer">
   <h3 style="margin: 0; padding: 4vmin">Connect with us.</h3>
@@ -144,6 +144,15 @@
   <a href="#" class="footer-link">Blog</a>
 </div>
 
+<div class="expired-token-warning">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  Fitbit access token has expired. Please log in again with Fitbit to view your data. If this is the guest account, Fitbit data is currently unavailable.
+</div>
+
+<div class="api-limit-warning">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  Fitbit API request limit has been reached. Please until the start of the next hour.
+</div>
 
 
 <%= render "signIn" %>

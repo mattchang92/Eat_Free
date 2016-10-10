@@ -1,0 +1,6 @@
+$('.api-limit-warning').css('top', ($(window).height() * 0.4) + 'px');
+$('.api-limit-warning').css('left', ($(window).width() * 0.5) - (0.5 * $('.api-limit-warning').width()) + 'px');
+$('.api-limit-warning').show();
+setTimeout(function(){
+  $('.api-limit-warning').fadeOut('slow');
+},10000)

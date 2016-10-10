@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
       namespace :v1 do
         post '/authenticate_user' => 'users#login'
+        post '/add_recipe' => 'recipes#add_recipe'
+        get '/foodlogs' => 'recipes#show_foodlog'
         resources :recipes, only: [:index]
       end
     end
