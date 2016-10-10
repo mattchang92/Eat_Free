@@ -37,12 +37,13 @@ class StatsController < ApplicationController
 
         respond_to do |format|
 
-          if @weight["errors"][0]["message"].include?('Rate limit exceeded for this user')
-            format.html { redirect_to root_path }
-            format.js { render :api_limit_reached }
-          elsif @weight["errors"]
-            format.html { redirect_to root_path }
-            format.js { render :token_expired }
+          if @weight["errors"]
+            if @weight["errors"][0]["message"].include?('Rate limit exceeded for this user')
+              format.html { redirect_to root_path }
+              format.js { render :api_limit_reached }
+              # format.html { redirect_to root_path }
+              # format.js { render :token_expired }
+            end
           else
             @average_hr = average_hr
             @max_steps = max_steps
@@ -54,7 +55,8 @@ class StatsController < ApplicationController
             @rate = current_user.stats.last.weight_loss_rate
             current_user.stats.last.units == 'metric' ? true : @rate /= 2.2
             format.html { redirect_to stats_path }
-            format.js { redirect_to stats_path }
+            format.js { render :redirect_to_stats_path }
+            # format.js { render :js => "window.location = #{stats_path}" }
           end
         end
       end

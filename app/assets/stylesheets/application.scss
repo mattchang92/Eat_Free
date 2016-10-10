@@ -80,26 +80,24 @@ div.header-wrapper {
   padding: 50px;
 }
 
-.expired-token-warning {
+.warning {
   position: fixed;
   display: none;
   padding: 20px;
   background-color: #f44336;
   color: white;
   margin-bottom: 15px;
-  z-index: 20;
+  z-index: 100;
 }
 
-.api-limit-warning {
-  position: fixed;
-  display: none;
-  padding: 20px;
-  background-color: #f44336;
-  color: white;
-  margin-bottom: 15px;
-  z-index: 20;
+#login-error {
+  text-align: center;
 }
 
+#login-error-message{
+  margin: 0;
+  color: red;
+}
 
 .link {
   background-opacity: 100%;
@@ -167,6 +165,7 @@ ul.nav > li.home-link {
 
 .app-navbar {
   padding: 50px 0;
+  margin-bottom: 40px;
 }
 
 .icon-bar {

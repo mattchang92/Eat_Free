@@ -6,7 +6,7 @@
     <li data-target="#myCarousel" data-slide-to="2"></li>
   </ol>
 
-
+<%= flash[:alert] %>
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
@@ -144,12 +144,17 @@
   <a href="#" class="footer-link">Blog</a>
 </div>
 
-<div class="expired-token-warning">
+<div class="expired-token-warning warning">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
   Fitbit access token has expired. Please log in again with Fitbit to view your data. If this is the guest account, Fitbit data is currently unavailable.
 </div>
 
-<div class="api-limit-warning">
+<div class="api-limit-warning warning">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  Fitbit API request limit has been reached. Please until the start of the next hour.
+</div>
+
+<div class="api-limit-warning warning">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
   Fitbit API request limit has been reached. Please until the start of the next hour.
 </div>
