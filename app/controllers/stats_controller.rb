@@ -54,9 +54,7 @@ class StatsController < ApplicationController
             @daily_distance = daily_distance
             @rate = current_user.stats.last.weight_loss_rate
             current_user.stats.last.units == 'metric' ? true : @rate /= 2.2
-            format.html { redirect_to stats_path }
             format.js { render :redirect_to_stats_path }
-            # format.js { render :js => "window.location = #{stats_path}" }
           end
         end
       end
