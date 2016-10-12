@@ -30,6 +30,12 @@ input:-webkit-autofill {
       border-color: #00CCBD;
     }
   }
+  a#forgot-password {
+    color: #337ab7;
+    &:hover {
+      background: none;
+    }
+  }
   h5 {
     a#link-to-sign-up {
       color: #337ab7;
@@ -43,6 +49,7 @@ input:-webkit-autofill {
     }
     a#link-to-sign-up:hover {
       text-decoration: underline;
+      background: none;
     }
   }
 }

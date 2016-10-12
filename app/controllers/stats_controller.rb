@@ -41,8 +41,9 @@ class StatsController < ApplicationController
             if @weight["errors"][0]["message"].include?('Rate limit exceeded for this user')
               format.html { redirect_to root_path }
               format.js { render :api_limit_reached }
-              # format.html { redirect_to root_path }
-              # format.js { render :token_expired }
+            elsif @weight["errors"][0]["message"].include?('Access token expired')
+              format.html { redirect_to root_path }
+              format.js { render :token_expired }
             end
           else
             @average_hr = average_hr

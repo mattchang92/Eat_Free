@@ -9,8 +9,16 @@ class Api::V1::RecipesController < Api::BaseController
   end
 
   def show_foodlog
-    foodlogs = @current_api_user.foodlogs.where('created_at >= ?', Time.zone.now.beginning_of_day)
-    render json: foodlogs
+    @foodlogs = @current_api_user.foodlogs.where('created_at >= ?', Time.zone.now.beginning_of_day)
+  end
+
+  def delete_foodlog
+    foodlog = Foodlog.find params[:foodlogId]
+    if foodlog.destroy
+      @foodlogs = @current_api_user.foodlogs.where('created_at >= ?', Time.zone.now.beginning_of_day)
+    else
+      render json: {success: false}
+    end
   end
 
   def add_recipe

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         post '/authenticate_user' => 'users#login'
         post '/add_recipe' => 'recipes#add_recipe'
         get '/foodlogs' => 'recipes#show_foodlog'
+        delete '/foodlogs' => 'recipes#delete_foodlog'
         resources :recipes, only: [:index]
       end
     end

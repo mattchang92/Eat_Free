@@ -11,7 +11,7 @@
 
   </div>
   <div class="col-sm-3">
-    <div class="col-xs-7">
+    <div class="col-xs-7" style="padding: 0">
       <h5>Calorie Composition:</h5>
       <div>
         <h5>Fats: <span id="fats-display"><%= (@fats / @total * 100).round(1) %>%</span><div class="macro-label" id="fats-color"></div></h5>
@@ -30,7 +30,7 @@
         </span><div class="macro-label" id="proteins-color"></div></h5>
       </div>
     </div>
-    <div class="col-xs-5" id="chart_area">
+    <div class="col-xs-5" id="chart_area" style="padding: 0">
       <canvas id="macros_chart" height="300px"></canvas>
     </div>
   </div>
