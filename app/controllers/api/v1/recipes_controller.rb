@@ -1,7 +1,7 @@
 class Api::V1::RecipesController < Api::BaseController
 
   protect_from_forgery with: :null_session
-  before_action :current_api_user, only: [:add_recipe, :show_foodlog]
+  before_action :current_api_user, only: [:add_recipe, :show_foodlog, :delete_foodlog, :get_stats]
 
   def index
     recipes = Recipe.all
@@ -25,10 +25,15 @@ class Api::V1::RecipesController < Api::BaseController
     foodlog = Foodlog.new recipe_params
     foodlog.user = @current_api_user
     if foodlog.save
-      render json: {success: true}
+      @foodlogs = @current_api_user.foodlogs.where('created_at >= ?', Time.zone.now.beginning_of_day)
     else
       render json: {success: false}
     end
+  end
+
+  def get_stats
+    stats = @current_api_user.stats.last
+    render json: stats
   end
 
   private

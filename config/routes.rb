@@ -30,6 +30,7 @@ Rails.application.routes.draw do
         post '/add_recipe' => 'recipes#add_recipe'
         get '/foodlogs' => 'recipes#show_foodlog'
         delete '/foodlogs' => 'recipes#delete_foodlog'
+        get '/stats' => 'recipes#get_stats'
         resources :recipes, only: [:index]
       end
     end
