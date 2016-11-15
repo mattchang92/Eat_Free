@@ -40,6 +40,7 @@ gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'awesome_print'
   gem 'hirb'
   gem 'byebug', platform: :mri
 end
