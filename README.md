@@ -1,5 +1,5 @@
 # Eat-Free
-[Live](www.eat-free.herokuapp.com)
+[Live](http://eat-free.herokuapp.com)
 
 ## Main features
 - A simple meal-planner app built on a RESTful Ruby on Rails architecture
